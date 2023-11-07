@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/criaçaoArtigo.css" media="screen" />
+    <title>Criação Artigo</title>
+</head>
+<body>
+
+    <section id="começo">
+
+
+
+        <div class="barra">
+         <input type="text"  class="text" placeholder="Buscar...">
+    
+        </div>
+    
+        <box-icon name='user-circle' color='#ececec' class="perfil" ></box-icon>
+    
+        <div class="div-logo">
+            <img src="/imagen\logo-home.png" class="logo">
+           </div>
+      
+    
+        <div class="conteiner" id="cos">
+      
+            <div class="hamburguer" id="btn-mobile">
+                <div class="line1" id="line1"></div>
+                <div class="line2" id="line2"></div>
+                <div class="line3" id="line3"></div>
+                <div class="line4" id="line4"></div>
+            
+    
+                    <img src="/imagen\home-Proximo.png" class="line6" id="line6">
+            </div>
+        </div>
+    
+         
+        <section>
+        
+            <div class="sidebar">
+                
+                <div class="logo-content">
+                
+                         <ul class="list">
+    
+                            
+                            <box-icon name='x' color="#f2f2f2" class="close-menu"></box-icon>
+    
+                            <img src="/imagen\logo-home.png" id="logo">
+                             
+        
+                            <hr>
+        
+                
+                             <li class="list-item active">
+        
+                               
+                               
+                                 <a  onclick="window.location='/homeL'">
+                
+                                <i class='bx bx-home'></i>
+        
+        
+                                 <img src="/imagen\home-home.png" class="img_home" id="home">
+                                 <span class="links-name">Home</span>
+        
+                
+                                 </a>
+                
+                                 <span class="tooltip">Home</span>
+                
+                            </li>
+                
+                            <li class="list-item">
+                
+                                 <a  onclick="window.location='/artigos'">
+                                
+                                 <i class='bx bx-user'></i>
+            
+                                  <img src="/imagen\home-livro.png" class="img_home" id="livro">
+                                  <span class="links-name" id="livro">Artigos</span>
+                
+                                 </a>
+                
+                                  <span class="tooltip">Artigos</span>
+                
+                            </li>
+                
+                
+                        </ul>
+        
+        
+                        <ul class="list-logout">
+                
+                            <li class="list-logout">
+            
+                                <a onclick="window.location='/loja'">
+                
+                                <i class='bx bx-log-out'></i>
+                
+                 
+                                <img src="/imagen\home-loja.png" class="img_home" id="loja">
+                                <span class="links-name">Loja</span>
+                
+                                </a>
+        
+                                <span class="tooltip">Loja</span>
+                
+                            </li> 
+        
+                        </ul>
+                
+                 </div>
+            </div>
+           
+        </section>
+    
+    </section>
+       
+    </div>
+    
+    </body>
+
+<main>
+
+    <div  id="fundo">
+<H1> CRIAÇÃO DE ARTIGOS</H1>
+<img src="/imagen\criacaoArtigo-menina.png" class="menina">
+<img src="/imagen\CriaçãoArtigo-menino.png" class="menino">
+    </div>
+
+
+
+
+<section id="imagem-de-capa">
+    <h2>Imagem de Capa</h2>
+
+
+    <form action="">
+        <div class="conteinar">
+    
+        <div class="input-file-upload">
+            <div class="upload-btn">
+            
+                <input type="file" id="upfile" onchange="readURL(this);">
+            </div>
+            <img class="upload-img"  id="file_upload">
+        </div>
+    </div>
+    
+  
+ 
+<hr id="hr1" >
+
+<h3 id="titulo">Titulo</h3>
+
+<input type="text" placeholder="Digite seu título..." id="titulo-text" maxlength="40" minlength="2" required>
+
+
+<hr id="hr2" >
+
+<h3 id="corpo">Corpo</h3>
+
+<input type="text" class="corpo-text" placeholder="Digite seu título..."  maxlength="40" minlength="2" required>
+
+
+
+
+<hr id="hr3">
+
+<a><Button type="submit" id="enviar"> Enviar </Button>
+
+
+
+
+
+</section>
+</form>
+
+
+
+
+
+
+</main>
+
+
+<footer>
+    
+    <div class="circulo1" >
+        
+    </div>
+
+    <img src="/imagen\logo-home.png" id="logo-footer">
+
+    <h2 class="Contato">Contato</h2>
+
+<div class="insta-div">
+   <a href="https://www.instagram.com/_ecovox/?igshid=MzRlODBiNWFlZA%3D%3D"><img src="imagen\home-instagram.png"  class="insta"></a>
+</div>
+
+<div class="enviar-div">
+    <img src="/imagen\home-e-mail.png" alt="" class="Enviar">
+</div>
+
+
+<Ul>
+    <li>
+        <a onclick="window.location='/homeL'">Home</a>
+    </li>
+    <li>
+        <a  onclick="window.location='/artigos'">Artigos</a>
+    </li>
+    <li>
+        <a onclick="window.location='/loja'">Loja</a>
+    </li>
+    
+     </Ul>
+    
+
+ <img src="/imagen\home-footer-fundo.png" id="footer-fundo">
+
+ <p>2023 EcoVox </p>
+
+ <img src="/imagen\home-registrado.png" id="registrado"> 
+
+   
+   
+ <script src="/js\artigo.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</footer>
+</html>
+

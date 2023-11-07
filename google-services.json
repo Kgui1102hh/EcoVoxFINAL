@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "899088613667",
+    "project_id": "controle-4fd08",
+    "storage_bucket": "controle-4fd08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899088613667:android:70d2cc56c3de15141bcc96",
+        "android_client_info": {
+          "package_name": "controle.de.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899088613667-sfg9ju3q79j2pnb9mgrk2d2elp50hb4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaHW8wk4eR_o3X_jM-YnMIQcM-kfyRNzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899088613667-b2h2fe8h18t30g99nj0195da0k2m8fas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

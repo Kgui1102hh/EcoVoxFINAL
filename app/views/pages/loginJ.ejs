@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loginJ</title>
+    <link rel="stylesheet" type="text/css" href="/css/loginj.css" media="screen" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/css\loginj.css" />
+</head>
+<body>
+<section>
+      <div class="border">
+        <div class="borda"> 
+            
+          <a  onclick="window.location='/home'">
+              <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
+              </a>
+    
+      <div class="logo1">
+          <img src="/imagen\login-logo-blue.png" class="logo2"> 
+      
+         </div>
+       </div>
+
+       <h1 class="titulo">Bem-vindo(a) de volta!</h1>
+       <h4 class="titulo-sub">Acessar sua conta</h4>
+
+
+   <div class="buttons">   
+     <a href=" "><button type="button" id="ops"  onmousemove="ops()" disabled onmouseout="sai()" class="ju">Juridico</button></a>
+
+     <a onclick="window.location='/loginF'"><button type="button" id="eae" value=""  class="fi" >Fisico</button></a>
+    </div>
+
+    
+     
+      <input type="button" id="google">
+      <span id="span-google">Continuar com Google</span>
+
+      <img src="/imagen\login-google.png" id="img-google">
+
+ <h3 class="p">- ou -</h3>
+ 
+
+    
+
+<main>
+    <form action="/loginjuri" method="post" id="form">
+      <% 
+      
+      let avisoErro = {"nome_usu":"", "senha_usu":""}
+      let msgErro = {"nome_usu":"", "senha_usu":""}
+      let listaErros = ""
+          if(listaErros){
+              listaErros.errors.forEach(function(itemErro){
+                  if(itemErro.path == "nome_usu"){
+                      avisoErro.nome_usu = "erro";
+                      msgErro.nome_usu = itemErro.msg
+                  }
+                  if(itemErro.path == "senha_usu"){
+                      avisoErro.senha_usu = "erro";
+                      msgErro.senha_usu = itemErro.msg
+                  }
+              })
+          }
+      %>
+      <div class="input-box">
+            <b id="cnpj_cpf"></b>
+            <input type="text" name="tel" id="cpf"  maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" class="cpf">
+            <span class="span-input">CNPJ</span><br>
+        </body>
+
+        <script>  
+          function formatar(mascara, documento) {
+            let i = documento.value.length;
+            let saida = '#';
+            let texto = mascara.substring(i);
+            while (texto.substring(0, 1) != saida && texto.length ) {
+              documento.value += texto.substring(0, 1);
+              i++;
+              texto = mascara.substring(i);
+            }
+          }
+        </script>
+     
+       
+     
+        </div>
+
+
+        <div class="input-box">
+            <input type="password" id="senha"   name="senha" required="required"/>
+            <span class="span-input">Senha</span><br>
+            <span class="lnr lnr-eye"></span>
+
+          
+        </div>
+        
+        <a href="" class="esqueceu" id="tiu"> Esqueceu sua senha?</a>
+
+
+        
+    <div class="button">
+      <button type="button" class="butao" onclick="validarForm()">Entrar</button>
+    </div>
+
+  
+    
+       
+    </form>
+
+   
+</main>
+<footer>
+
+    <h2 class="novo">Novo aqui?</h2> 
+    <a onclick="window.location='/cadastroJ'" class="cada"> Cadastre-se</a>
+    <script src="/js/home.js"></script>
+</footer>
+</div>
+  </div>
+
+</section>
+</body>
+
+
+</html>

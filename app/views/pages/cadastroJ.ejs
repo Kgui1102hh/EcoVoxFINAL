@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastroJ</title>
+    <link rel="stylesheet" type="text/css" href="/css\cadastroj.css" media="screen" />
+  
+</head>
+<body>
+<section>
+
+    <div class="border">
+  
+     <div class="borda">
+            
+        <a  onclick="window.location='/home'">
+            <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
+            </a>
+  
+    <div class="logo1">
+        <img src="/imagen\login-logo-blue.png" class="logo2"> 
+    
+       </div>
+     </div>
+
+
+    <h1 class="titulo"> Bem-vindo(a)! </h1>
+    <h4 class="titulo-sub">Cadastrar sua conta</h4>
+
+     
+
+    
+
+
+    
+   <div class="buttons">
+    <a href= ""><button type="button" id="eae" value="" disabled class="ju" > Juridico </button></a>
+   
+  
+    <a onclick="window.location='/cadastrof'"><button type="button" id="ops"  onmousemove="ops()"  onmouseout="sai()" class="fi">Físico</button></a>
+
+   </div>
+        
+    
+</body>
+<main>
+    <form action="/cadastrojuri" method="post">
+<% 
+    let msgErro = {"nomeJuridico":"", "senhaJuridico":"","emailJuridico":"", "telJuridico":"", "cnpj":"", "enderecoJuridico":""};
+    let avisoErro = {"nomeJuridico":"", "senhaJuridico":"","emailJuridico":"", "telJuridico":"", "cnpj":"", "enderecoJuridico":""};
+    let listaErros = ""
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nomeJuridico"){
+                avisoErro.nomeJuridico = "erro";
+                msgErro.nomeJuridico += " "+itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo nome<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "senhaJuridico"){
+                avisoErro.senhaJuridico = "erro";
+                msgErro.senhaJuridico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%                
+            }
+            if(itemErro.path == "emailJuridico"){
+                avisoErro.emailJuridico = "erro";
+                msgErro.emailJuridico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo e-mail<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "telJuridico"){
+                avisoErro.telJuridico = "erro";
+                msgErro.telJuridico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo telefone<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "cnpj"){
+                avisoErro.cnpj = "erro";
+                msgErro.cnpj = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo CNPJ.<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "enderecoJuridico"){
+                avisoErro.enderecoJuridico = "erro";
+                msgErro.enderecoJuridico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo de endereço.<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+        })
+    }
+%>
+        <div class="input-box">
+            <input type="name"  value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>" id="nomeJuridico" name="nomeJuridico" required="required">
+            <span class="span-input">Nome</span><br>
+            <span> <%= msgErro.nomeJuridico %> </span>
+        </div>
+        <div class="input-box">
+            <b id="cnpj"></b>
+            <input type="text" name="cnpj"  id="cnpj" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" value="<%= valores.cnpj %>" class="<%= avisoErro.cnpj %>">
+            <span class="span-input">CNPJ</span><br>
+            <span> <%= msgErro.cnpj %> </span>
+            
+            <br>
+            <script>  
+                function formatar(mascara, documento) {
+                  let i = documento.value.length;
+                  let saida = '#';
+                  let texto = mascara.substring(i);
+                  while (texto.substring(0, 1) != saida && texto.length ) {
+                    documento.value += texto.substring(0, 1);
+                    i++;
+                    texto = mascara.substring(i);
+                  }
+                }
+              </script>
+        </div>
+        <div class="input-box">
+            <input type="email" id="emailJuridico"  value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>" name="emailJuridico" required="required">
+            <span class="span-input">Email</span><br>
+            <span> <%= msgErro.emailJuridico %> </span><br>
+        </div>
+        <div class="input-box">
+            <input type="tel" value="<%= valores.telJuridico %>" class="form-control" class="<%= avisoErro.telJuridico %>" id="telJuridico" name="telJuridico" maxlength="15"  pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
+            <span class="span-input">Tel</span><br>
+            <span> <%= msgErro.telJuridico %> </span><br>
+        </div>
+        <script>
+            const telJuridico = document.getElementById('telJuridico') // Seletor do campo de telefone
+            telJuridico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
+            telJuridico.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
+            const mascaraTelefone = (valor) => {
+                valor = valor.replace(/\D/g, "")
+                valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+                valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+             telJuridico.value = valor // Insere o(s) valor(es) no campo
+            }
+        </script>
+        <div class="input-box">
+            <input type="text" class="end" value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>" id="enderecoJuridico" name="enderecoJuridico" required="required">
+            <span class="span-input">Endereço</span><br>
+            <span> <%= msgErro.enderecoJuridico %> </span><br>
+        </div>
+        <div class="input-box">
+            <input type="password" id="senhaJuridico"  class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico" required="required"/>
+            <span class="span-input">Senha</span><br>
+            <span> <%= msgErro.senhaJuridico %> </span>
+
+            <br>
+        </div>
+        <div class="button">
+            <button type="submit" class="butao" onclick="window.location='/Termos'">Entrar</button>
+        </div>
+    </form>
+
+    <p class="Politica">Ao cadastrar-se você pode concordar com a<br>
+    <a onclick="window.location='/Termos'">Politica de Privacidade</a> e <a>Termos & Condições</a></p>
+
+
+</main>
+<footer>
+
+    <h2 class="ja">Ja possui conta?</h2> 
+    <a  onclick="window.location='/loginJ'" class="logar"> <h2 class="se">Acessar</h2></a>
+
+</footer>
+</div>
+</section>
+
+
+<script src="/js\cadastroj.js"></script>
+</html>

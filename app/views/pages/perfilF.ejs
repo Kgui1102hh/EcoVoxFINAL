@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/b023fbb394.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/perfil.css">
+     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Perfil </title>
+</head>
+
+    
+<body>
+    <section id="começo">
+
+        <div class="div-logo">
+            <img src="/imagen\logo-home.png" class="logo" id="lgo">
+           </div>
+      
+
+
+
+           <div class="search-box">
+            <input type="text" class="search-text">
+            <a class="search-btn">
+            <box-icon class="icone-lupa" name='search-alt-2' color='#f2f2f2' widht="60px" height="60px" ></box-icon>
+            </a>
+        </div>  
+
+
+        
+        <div class="nav-home">
+            <ul>
+                <li><a onclick="window.location='/homeLF'">Home</a> </li>
+                <li><a onclick="window.location='/artigos'">Blog</a> </li>
+                <li onclick="window.location='/loja'"><a>Loja</a> </li>
+                <li><a>Sair</a> </li>
+               
+            
+            </ul>
+        </div>
+        
+    
+        <div class="conteiner" id="cos">
+      
+            <div class="hamburguer" id="btn-mobile">
+                <div class="line1" id="line1"></div>
+                <div class="line2" id="line2"></div>
+                <div class="line3" id="line3"></div>
+                <div class="line4" id="line4"></div>
+            
+    
+                    <img src="/imagen\home-Proximo.png" class="line6" id="line6">
+            </div>
+        </div>
+    
+        
+    
+    <section>
+    
+        <div class="sidebar">
+            
+            <div class="logo-content">
+            
+                     <ul class="list">
+
+                        <box-icon name='x' color="#f2f2f2" class="close-menu"></box-icon>
+
+                        <img src="/imagen\logo-home.png" id="logo">
+                         
+    
+                        <hr>
+    
+            
+                         <li class="list-item active">
+    
+                           
+                           
+                             <a  onclick="window.location='/homeL'">
+            
+                            <i class='bx bx-home'></i>
+    
+    
+                             <img src="/imagen\home-home.png" class="img_home" id="home">
+                             <span class="links-name">Home</span>
+    
+            
+                             </a>
+            
+                             <span class="tooltip">Home</span>
+            
+                        </li>
+            
+                        <li class="list-item">
+            
+                             <a  onclick="window.location='/artigos'">
+                            
+                             <i class='bx bx-user'></i>
+        
+                              <img src="/imagen\home-livro.png" class="img_home" id="livro">
+                              <span class="links-name" id="livro">Artigos</span>
+            
+                             </a>
+            
+                              <span class="tooltip">Artigos</span>
+            
+                        </li>
+            
+                      
+            
+                    </ul>
+    
+    
+                    <ul class="list-logout">
+            
+                        <li class="list-logout">
+        
+                            <a onclick="window.location='/loja'">
+            
+                            <i class='bx bx-log-out'></i>
+            
+             
+                            <img src="/imagen\home-loja.png" class="img_home" id="loja">
+                            <span class="links-name">Loja</span>
+            
+                            </a>
+    
+                            <span class="tooltip">Loja</span>
+            
+                        </li>
+                    </ul>
+            
+             </div>
+        </div>
+       
+    </section>
+
+</section>
+   
+</div>
+
+
+
+<main>
+
+    <div  class="retorno">
+        <box-icon name='chevron-left' onclick="window.location='/homeLF'" color='#616162' class="Box-seta" ></box-icon>
+        <p onclick="window.location='/homeLF'" >Voltar</p>
+    </div>
+
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+          
+                <div class="perfil-usuario-avatar">
+                    <img id="imagem-de-fundo1" src="img/perfil/perfil.png" alt="img-avatar1">
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo"></h3>
+            </div>
+            <a  onclick="window.location='/perfileditF'" id="editar">Editar perfil</a>
+
+
+     
+
+           
+        </section>
+
+        <h1 class="name">NOME_USUARIO</h1>
+        <h3 class="empresas"></h3>
+
+
+        <div class="tab">
+            <button  class="tab-button" onclick=" abrirtab(event,'sobre')" >Sobre</button>
+            <button class="tab-button" onclick=" abrirtab(event,'contato')">Contatos</button>
+        </div>
+
+        <div class="conteudo" id="sobre">
+
+        <div class="conteudo-info">
+            <div class="informaçao">
+                <box-icon name='map' class="informaçao-icone"></box-icon>
+                <h3>Localização</h3>
+                <p>localização_usuario</p>
+            </div>
+            <div class="informaçao">
+                <box-icon  name='purchase-tag-alt' class="informaçao-icone"></box-icon>
+                <h3>Loja</h3>
+                <p>loja_usuario</p>
+           </div>
+      </div>
+
+          
+        </div>
+
+        <div class="conteudo" id="contato">
+            <div class="conteudo-info">
+                <div class="informaçao">
+                    <box-icon name='envelope' class="informaçao-icone"></box-icon>
+                    <h3>Email</h3>
+                    <p>email_usuario</p>
+                </div>
+              
+    <div class="informaçao">
+        <box-icon  name='phone' class="informaçao-icone"></box-icon>
+        <h3>Telefone</h3>
+        <p>telefone_usuario</p>
+    </div>
+        </div>
+
+        <script>
+            function abrirtab(event, idTab){
+                var conteudos = document.getElementsByClassName('conteudo');
+                for(var i = 0; i < conteudos.length; i++){
+                      conteudos[i].style.display = 'none';
+                }
+                   
+                var tabs = document.getElementsByClassName('tab-button')
+                for(var i = 0; i < tabs.length; i++){
+                      tabs[i].className = tabs[i].className.replace('ative', '');
+                }
+
+                document.getElementById(idTab).style.display = 'block';
+                event.currentTarget.className += 'ative';
+
+
+            }
+        </script>
+ 
+
+       
+  
+
+    
+  
+</main>
+
+    
+    
+<footer>
+    
+    <div class="div-faça-parte">
+      <div class="faça-parte">
+          <p>Faça parte da Ecovox e vamos tornar o Brasil mais ecológico juntos!</p>
+          <button  onclick="window.location='/cadastroF'">  ACESSO </button>
+          <img src="/imagen\home-correto.png" >
+      </div>
+  <div>
+   
+  
+  
+      <div class="contato">
+          <h3>Contato</h3>
+          <p>ecovox@gmail.com<br>
+              (XX) X XXXX-XXXX
+          </p>
+      </div>    
+  
+      <hr>
+  
+      <a onclick="window.location='/Termos'">Política de Privacidade</a>
+      <a>Termos & Condições</a>
+      
+  
+   <img src="/imagen\home-footer-fundo.png" id="footer-fundo">
+  
+   <p>2023 EcoVox </p>
+  
+   <img src="/imagen\home-registrado.png" id="registrado"> 
+  
+     
+  
+  
+  </footer>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="/app/public/js/link-button.js"></script>
+<script src="/js/home.js"></script>
+
+
+</html>

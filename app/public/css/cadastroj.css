@@ -1,0 +1,237 @@
+
+
+*{
+
+    box-sizing: border-box;
+    font-family: helvetica;
+}
+
+body{
+box-sizing: border-box;
+height: 1380px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+margin-left: auto;
+margin-right: auto;
+background-image: url("/imagen/gif-cadastro.gif");
+background-size: 100% 100%;
+padding-top: 10px;
+
+
+}
+span{
+    color: red;
+    margin-left: 23px;
+   
+}
+body section{
+    width: 480px;
+    margin-left: auto;
+   margin-right: auto;
+    height: 1360px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    
+    
+}
+.borda{
+    width: 100%;
+    height: 252px;
+    background-color: #00AAAA;
+    border-bottom-right-radius:16px ;
+    border-bottom-left-radius: 16px;
+    background-image: url("/imagen/login-folhas.png");
+
+}
+.seta{
+    width: 65px;
+    height: 65px;
+    margin-top: 57px;
+    margin-left: 24px;
+    border: 3px;
+    
+
+}
+
+.logo2{
+width: 60px;
+position: relative;
+display: flex;
+height: 60px;
+margin-left: 210px;
+margin-top: 80px;
+
+}
+.titulo{
+font-family: helvetica;
+font-size: 36px;
+font-weight: 700;
+line-height: 85px;
+letter-spacing: 0em;
+text-align: left;
+margin-left: 30px;
+color: #727272;
+}
+.titulo-sub{
+    color: #616162;
+    font-size: 24px;
+    line-height: 29.05px;
+    margin-top: -40px;
+    font-weight: 400;
+    margin-left: 33px;
+}
+.buttons button{
+    width: 204px;
+    height: 60px;
+     
+    background: transparent;
+    margin-left: 24px;
+    border-radius: 10px;
+    font-family: helvetica;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39px;
+    letter-spacing: 0em;
+    border: 2px solid #888888;
+    text-align: left;
+    
+    
+    }
+    #eae{
+       padding-left: 35px;
+       background: linear-gradient(93.76deg, #00AAAA 68.63%, rgba(0, 170, 170, 0) 188.23%);
+       color: #FFFFFF;
+       margin-left: 250px;
+       border: none;
+    }
+    #ops{
+        padding-left: 50px;
+        color: #888888;
+        margin-left: -430px;
+    }  
+
+    section input{
+width: 432px;
+height: 60px;
+margin-top: 30px;
+margin-left: 25px;
+border: 2px solid #888888;
+font-family: helvetica;
+font-size: 24px;
+font-weight: 400;
+padding-left: 15px;
+border-radius: 10px;
+letter-spacing: 0em;
+text-align: left;
+
+    }
+    .input-box{
+        position: relative;
+        margin-top: -20px;
+        padding-top: 10px;
+        
+      }
+      .input-box .span-input{
+        position: absolute;
+        margin-left: -430px;
+        margin-top: 40px;
+        padding: 10px;
+        pointer-events: none;
+        font-size: 1em;
+        text-transform: uppercase;
+        color: #727272;
+        transition: 0.5s;
+      }
+      
+      .input-box input:focus ~ .span-input{
+        color: #F2F2F2;
+        transform: translateX(10px) translateY(-15px);
+        font-size: 0.65em;
+        padding: 0 10px;
+        background: #009696;
+        border-left:1px solid #009696 ;
+        border-radius: 1px;
+        border-right:1px solid #009696 ;
+        letter-spacing: 0.2em;
+      
+      }
+      
+      .input-box input:focus{
+        border: solid 2px #009696;
+      }
+      .Politica{
+        font-size: 20px;
+        margin-top: -200px;
+        color: #616162;
+        font-weight: 400;
+        text-align: center;
+
+      }
+      .Politica a{
+        color: #00AAAA;
+        font-weight: 400;
+        border-bottom: 1px solid #009696;
+      }
+    .butao{
+        width: 432px;
+        height: 60px;
+        margin-top: 150px;
+        margin-left: 23px;
+        border-radius: 10px;
+        border:  none;
+        font-family: helvetica;
+        padding-left: 170px;
+        background: linear-gradient(93.76deg, #00AAAA 68.63%, rgba(0, 170, 170, 0) 188.23%);
+        font-size: 25px;
+        font-weight: 700;
+        color:  #F2F2F2;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: left;
+        
+        
+        }
+.ja{
+font-family: helvetica;
+font-size: 25px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+color:  #727272;
+margin-top: 170px;
+margin-left: 90px;
+
+
+        }
+.logar{
+    font-family: helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    color:  #727272;
+    margin-left: 285px;
+    margin-top: -74px;
+    display: flex;
+    position: relative;
+
+    
+
+}
+@media screen and (max-width:480px){
+
+    body section{
+        width: 480px;
+        }
+
+    body{
+        background-color: #FFFFFF;
+        height: 965px;
+        width: 480px;
+        background-image: none;
+    }
+        
+    
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastroF</title>
+    <link rel="stylesheet" type="text/css" href="/css\cadastrof.css" media="screen" />
+</head>
+<body>
+    
+    <dialog open>
+  
+        <div>
+
+            <h1>Política de Privacidade </h1>
+                 <p>
+         
+         A sua privacidade é importante para nós. É política do EcoVox respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site, e outros sites que possuímos e operamos.<br>
+         
+         Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado. <br>
+         
+         Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.<br> 
+         
+         Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.<br>
+         
+         O nosso site pode ter links e anúncios para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.<br>
+         
+         Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados. 
+         
+         O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto conosco.</p>
+         
+         <ul>
+         <li>
+         
+         O serviço Google AdSense que usamos para veicular publicidade usa um cookie DoubleClick para veicular anúncios mais relevantes em toda a Web e limitar o número de vezes que um determinado anúncio é exibido para você. 
+         </li>
+         <li>
+         Para mais informações sobre o Google AdSense, consulte as FAQs oficiais sobre privacidade do Google AdSense.
+         </li>
+         <li>
+         Utilizamos anúncios para compensar os custos de funcionamento deste site e fornecer financiamento para futuros desenvolvimentos. Os cookies de publicidade comportamental usados por este site foram projetados para garantir que você forneça os anúncios mais relevantes sempre que possível, rastreando anonimamente seus interesses e apresentando coisas semelhantes que possam ser do seu interesse. 
+         </li>
+         <li>
+         Vários parceiros anunciam em nosso nome e os cookies de rastreamento de afiliados simplesmente nos permitem ver se nossos clientes acessaram o site através de um dos sites de nossos parceiros, para que possamos creditá-los adequadamente e, quando aplicável, permitir que nossos parceiros afiliados ofereçam qualquer promoção que pode fornecê-lo para fazer uma compra. 
+         </li>     
+         </ul>
+         
+          
+          
+         <h3>Compromisso do Usuário </h3>
+         O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o EcoVox oferece no site e com caráter enunciativo, mas não limitativo:<br>
+         
+         <uL>
+             <li>
+         A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé a à ordem pública; <br>
+         </li>
+         <li>
+         B) Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de sorte ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos; <br>
+         </li>
+         <li>
+         C) Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) do EcoVox, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados. <br>
+         </li>
+         </uL>
+          
+         
+         Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site. <br>
+         
+         Esta política é efetiva a partir de 29 de Setembro de 2023. <br>
+  <form method="dialog">
+    <button>Concordo</button>
+  </form>
+</dialog>
+
+    <section>
+    <div class="border">
+        <div class="borda"> 
+            
+                <a  onclick="window.location='/home'">
+                    <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
+                    </a>
+          
+            <div class="logo1">
+                <img src="/imagen\login-logo-blue.png" class="logo2"> 
+            
+               </div>
+             </div>
+
+             <h1 class="titulo"> Bem-vindo(a)! </h1>
+             <h4 class="titulo-sub">Cadastrar sua conta</h4>
+         
+              
+         
+             
+    </div>
+     
+    <div class="buttons">
+        <a onclick="window.location='/cadastroJ'"><button type="button" id="ops" value="" class="ju" > Juridico </button></a>
+        <a href=" "><button type="button" id="eae"  onmousemove="ops()" disabled  onmouseout="sai()" class="fi">Físico</button></a>
+    </div>
+    
+</body>
+<main>
+    <form action="/cadastroFpp" method="post">
+        <% 
+    let msgErro = {"nomeFisico":"", "senhaFisico":"","emailFisico":"", "telFisico":""};
+    let avisoErro = {"nomeFisico":"", "senhaFisico":"","emailFisico":"", "telFisico":""};
+    let listaErros = ""
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nomeFisico"){
+                avisoErro.nomeFisico = "erro";
+                msgErro.nomeFisico += " "+itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo nome<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "senhaFisico"){
+                avisoErro.senhaFisico = "erro";
+                msgErro.senhaFisico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%                
+            }
+            if(itemErro.path == "emailFisico"){
+                avisoErro.emailFisico = "erro";
+                msgErro.emailFisico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo e-mail<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "telFisico"){
+                avisoErro.telFisico = "erro";
+                msgErro.telFisico = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo telefone<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+        })
+    }
+    %>
+    <%
+    let valores = { "action" : "/cadastroFp",
+                    "nomeFisico":"","emailFisico":"","telFisico":"","senhaFisico":""};
+    let perfil=""
+    if(perfil){
+        valores.action = "/cadastroFpp";
+        valores.nomeFisico = perfil[0].nomeFisico;
+        valores.emailFisico = perfil[0].emailFisico;
+        valores.telFisico = perfil[0].telFisico;
+        valores.senhaFisico = perfil[0].senhaFisico;
+    }      
+%>
+%>
+
+        <div class="input-box">
+            <input type="text" id="nomeFisico" name="nomeFisico"  class="nome" value="<%= valores.nomeFisico %>" class="<%= avisoErro.nomeFisico %>" required="required"/>
+            <span class="span-input">Nome</span><br>
+            <span > <%= msgErro.nomeFisico %> </span>
+          
+        </div>
+
+        <div class="input-box">
+            <input type="email" id="emailFisico"  class="email" name="emailFisico" value="<%= valores.emailFisico %>" class="<%= avisoErro.emailFisico %>" required="required" />
+            <span class="span-input">Emal</span><br>
+            <span> <%= msgErro.emailFisico %> </span><br>
+          
+       
+            <div class="input-box">
+            <input type="tel" class="form-control" id="telFisico" name="telFisico" maxlength="15"  pattern="\(\d{2}\)\s*\d{5}-\d{4}" value="<%= valores.telFisico %>" class="<%= avisoErro.telFisico %>">
+            <span class="span-input">Tel</span><br>
+            <span > <%= msgErro.telFisico %> </span><br>
+        </div>
+        <script>
+            const telFisico = document.getElementById('telFisico') // Seletor do campo de telefone
+            telFisico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
+            telFisico.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
+            const mascaraTelefone = (valor) => {
+                valor = valor.replace(/\D/g, "")
+                valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+                valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+             telFisico.value = valor // Insere o(s) valor(es) no campo
+            }
+        </script>
+
+        <div class="input-box">
+            <input type="password" id="senhaFisico"  name="senhaFisico" class="senha" required="required" value="<%= valores.senhaFisico %>" class="<%= avisoErro.senhaFisico %>"/>
+            <span class="span-input">Senha</span><br>
+            <span> <%= msgErro.senhaFisico %> </span><br>
+        </div>
+       
+        <div class="button">
+            <button type="submit" class="butao">Entrar</button>
+        </div>
+
+    </form>
+
+    <p class="Politica">Ao cadastrar-se você pode concordar com a<br>
+        <a onclick="window.location='/Termos'">Politica de Privacidade</a> e <a>Termos & Condições</a></p>
+    
+    
+
+
+</main>
+<footer>
+
+<h2 class="ja">Ja possui conta?</h2> 
+<a  onclick="window.location='/loginF'" class="logar"> <h2 class="se">Acessar</h2></a>
+
+
+
+
+</footer>
+</div>
+</section>
+
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../conexao.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/cadastrof.js"></script>
+
+
+</html>

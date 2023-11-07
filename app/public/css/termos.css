@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    font-family: Helvetica ;
+}
+body{
+    background: #616162 ;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+
+    
+}
+div{
+    height: 500px;
+    background: #F2F2F2;
+    width: 800px;
+    align-self: center;
+    margin-left: 300px;
+    font-size: 20px;
+    margin-top:  100px;
+   border-radius: 3%;
+   padding-left: 20px;
+   padding-right: 20px;
+   overflow: scroll;
+
+}
+div::-webkit-scrollbar{
+
+    background-color: #F2F2F2;
+    width: 12px;
+    border-radius: 5%;
+
+}
+div::-webkit-scrollbar-thumb{
+background-color: #222222;
+border-radius: 5%;
+}
+div::-webkit-scrollbar-track{
+    border-radius: 5%;
+
+}
+div::-webkit-scrollbar-track-piece{
+    border-radius: 5%;
+
+}
+div::-webkit-scrollbar-corner{
+    border-radius: 5%;
+    
+}
+p{
+    word-spacing: 5px;
+    line-height: 30px;
+}
+li{
+    word-spacing: 5px;
+    line-height: 30px;
+}
+button{
+    width: 90px;
+    height: 20px;
+    margin-left: 10px;
+    
+}
+.button1{
+    margin-left: 290px;
+    margin-top: 20px;
+}
+.button1:hover{
+    background: green;
+    color: #F2F2F2;
+}
+.button2:hover{
+    background: red;
+    color: #F2F2F2;
+}
+
+@media screen and (max-width:480px){
+
+    body{
+        background: #F2F2F2;
+    }
+    div{
+        margin-left: 0px;
+        font-size:15px ;
+        margin-top: -15px;
+        width: 500px;
+        
+     
+    }
+    .button2{
+     margin-left: 210px;
+     background-color: red;
+     color: #F2F2F2;
+     display: flex;
+     margin-top: -20px;
+     padding-left: 15px;
+    }
+    .button1{
+        background-color: green;
+        color: #F2F2F2;
+        margin-left: 110px;
+    }
+
+
+    
+}
