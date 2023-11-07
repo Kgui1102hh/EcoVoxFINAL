@@ -1037,51 +1037,7 @@ display: flex
     width: 58px;
     height: 58px;
   }
-  .produto-usuario{
-    width: 350px;
-    height: 365px;
-    margin-left: 50px;
-    padding-left: 50px;
-    margin-top: 10px;
-    border-radius: 10px; 
-    background: linear-gradient(180deg, #D9D9D9 60%, rgba(255, 255, 255, 0) 100%);
-  }
-  .produto-usuario img{
-    width: 237px;
-  height: 306px
-  }
-  .produto-usuario h2{
-    height: 39px;
-    width:227px ;
-font-family: "";
-font-size: 32px;
-font-weight: 400;
-line-height: 39px;
-letter-spacing: 0em;
-margin-left: -30px;
-color: #616162;
-
-
-  }
-  .produto-usuario hr{
-    color: #D9D9D9;
-    width: 320px;
-  }
-  .produto-usuario h4{
-
-width: 130px ;
-margin-top: 60px;
-margin-left: -25px;
-font-family: '';
-border-bottom: 2px solid #616162;
-color: #616162;
-font-size: 32px;
-font-weight: 700;
-line-height: 39px;
-letter-spacing: 0em;
-text-align: left;
-}
-
+  
 
 
   
@@ -1091,39 +1047,64 @@ text-align: left;
   #input-imagem {
     opacity: 0;
   }
+  .criar-produtos{
+    background-color: #222222;
+    width: 569px;
+    text-align: left;
+    height: 321px;
+    border-radius: 15px;
 
- 
-  #regios{
-    width: 315px;
-    height: 80px;
-    font-family: helvetica;
-    font-style: normal;
+    margin-left: 50px;
+  }
+  .criar-produtos h1{
+  color: #F2F2F2;
+    font-size: 64px;
+   margin-left: 20px;
+   padding-top: 60px;
     font-weight: 700;
-    font-size: 32px;
-    line-height: 40px;
-    color: #616162;
-    }
     
-    .regioes{
-        width: 432px;
-        height: 690px;
-        background: #F2F2F2;
-        box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.12);
-        border-radius: 10px;
-         margin-left:50px;
-        margin-right: auto;
-        margin-top:82px;
-        }
-      
-        
-        .mais{
-          width: 200px;
-          height: 200px;
-          margin-left: 100px;
-          margin-top: 150px;
-       
-        }
-        
+  }
+  
+ 
+  .criar-produtos strong{
+    font-size: 80px;
+
+  }
+  .criar-produtos img{
+    height: 356px;
+    width: 480px;
+    margin-top: -303px;
+    margin-left: 180px;
+  }
+  .criar-artigos{
+    background-color: #222222;
+    width: 569px;
+    text-align: left;
+    height: 321px;
+    border-radius: 15px;
+
+    margin-left: 50px;
+  }
+  .criar-artigos h1{
+    color: #F2F2F2;
+    transition: .35s;
+    font-size: 64px;
+   margin-left: 20px;
+   padding-top: 60px;
+    font-weight: 700;
+    
+  }
+ 
+  .criar-artigos strong{
+    font-size: 80px;
+
+  }
+  .criar-artigos img{
+    height: 388px;
+    width: 286px;
+    margin-top: -336px;
+    margin-left: 283px;
+  }
     
   footer{
 
