@@ -13,23 +13,21 @@
 
     <div class="border">
   
-     <div class="borda">
-            
-        <a  onclick="window.location='/home'">
-            <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
-            </a>
-  
-    <div class="logo1">
-        <img src="/imagen\login-logo-blue.png" class="logo2"> 
-    
-       </div>
-     </div>
-
-
-    <h1 class="titulo"> Bem-vindo(a)! </h1>
-    <h4 class="titulo-sub">Cadastrar sua conta</h4>
-
+        <div class="borda">
+               
+           <a  onclick="window.location='/home'">
+               <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
+               </a>
      
+       <div class="logo1">
+           <img src="/imagen\login-logo-blue.png" class="logo2"> 
+       
+          </div>
+        </div>
+   
+   
+       <h1 class="titulo"> Bem-vindo(a)! </h1>
+       <h4 class="titulo-sub">Cadastrar sua conta</h4>
 
     
 
@@ -50,7 +48,6 @@
 <% 
     let msgErro = {"nomeJuridico":"", "senhaJuridico":"","emailJuridico":"", "telJuridico":"", "cnpj":"", "enderecoJuridico":""};
     let avisoErro = {"nomeJuridico":"", "senhaJuridico":"","emailJuridico":"", "telJuridico":"", "cnpj":"", "enderecoJuridico":""};
-    let listaErros = ""
     if(listaErros){
         listaErros.errors.forEach(function(itemErro){
             if(itemErro.path == "nomeJuridico"){
@@ -109,18 +106,24 @@
             }
         })
     }
-%>
-        <div class="input-box">
-            <input type="name"  value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>" id="nomeJuridico" name="nomeJuridico" required="required">
-            <span class="span-input">Nome</span><br>
+    if (dadosNotificacao) { %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){window.location="/"}, 3000)
+                }                        
+        </script>
+    <% } %>
+        <div class="social">
+            <input type="name" placeholder="Nome/Razão Social" value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>" id="nomeJuridico" name="nomeJuridico" required="required">
             <span> <%= msgErro.nomeJuridico %> </span>
+            <span>(min:3 - Max:20)</span><br>
         </div>
-        <div class="input-box">
+        <div>
             <b id="cnpj"></b>
-            <input type="text" name="cnpj"  id="cnpj" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" value="<%= valores.cnpj %>" class="<%= avisoErro.cnpj %>">
-            <span class="span-input">CNPJ</span><br>
+            <input type="text" name="cnpj" placeholder="CNPJ" id="cnpj" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" value="<%= valores.cnpj %>" class="<%= avisoErro.cnpj %>">
             <span> <%= msgErro.cnpj %> </span>
-            
+            <span>(O CNPJ deve ter 14 dígitos!)</span>
             <br>
             <script>  
                 function formatar(mascara, documento) {
@@ -135,14 +138,12 @@
                 }
               </script>
         </div>
-        <div class="input-box">
-            <input type="email" id="emailJuridico"  value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>" name="emailJuridico" required="required">
-            <span class="span-input">Email</span><br>
+        <div class="tudo">
+            <input type="email" id="emailJuridico" placeholder="Email" value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>" name="emailJuridico" required="required">
             <span> <%= msgErro.emailJuridico %> </span><br>
         </div>
-        <div class="input-box">
-            <input type="tel" value="<%= valores.telJuridico %>" class="form-control" class="<%= avisoErro.telJuridico %>" id="telJuridico" name="telJuridico" maxlength="15"  pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
-            <span class="span-input">Tel</span><br>
+        <div class="fone">
+            <input type="tel" value="<%= valores.telJuridico %>" class="form-control" class="<%= avisoErro.telJuridico %>" id="telJuridico" name="telJuridico" maxlength="15" placeholder="Telefone" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
             <span> <%= msgErro.telJuridico %> </span><br>
         </div>
         <script>
@@ -156,25 +157,20 @@
              telJuridico.value = valor // Insere o(s) valor(es) no campo
             }
         </script>
-        <div class="input-box">
-            <input type="text" class="end" value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>" id="enderecoJuridico" name="enderecoJuridico" required="required">
-            <span class="span-input">Endereço</span><br>
+        <div class="Endereco">
+            <input type="text" placeholder="Endereço" class="end" value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>" id="enderecoJuridico" name="enderecoJuridico" required="required">
             <span> <%= msgErro.enderecoJuridico %> </span><br>
         </div>
-        <div class="input-box">
-            <input type="password" id="senhaJuridico"  class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico" required="required"/>
-            <span class="span-input">Senha</span><br>
+        <div class="bem">
+            <input type="password" id="senhaJuridico" placeholder="Senha" class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico" required="required"/>
             <span> <%= msgErro.senhaJuridico %> </span>
-
+            <span>( mín 8 caracteres e 1 especial, 1 letra maiúscula,  e 1 número')</span>
             <br>
         </div>
         <div class="button">
             <button type="submit" class="butao" onclick="window.location='/Termos'">Entrar</button>
         </div>
     </form>
-
-    <p class="Politica">Ao cadastrar-se você pode concordar com a<br>
-    <a onclick="window.location='/Termos'">Politica de Privacidade</a> e <a>Termos & Condições</a></p>
 
 
 </main>

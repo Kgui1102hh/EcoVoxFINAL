@@ -37,9 +37,25 @@
             
             </ul>
         </div>
+        <% if(autenticado){
+            if(login){%>
+           <script>
+               notify("Login efetuado com sucesso", "Olá <%=autenticado%>", "success", "center")                        
+           </script>
+           <% } 
+           let arquivo={"imagem":"imagem/img-perfil.png"} ;
+           if(imgPerfilPastaFisi !=null){ 
+                arquivo.imagem = imgPerfilPastaFisi;
+           }else(imgPerfilBancoFisi !=null){ 
+                const imgBuffer = Buffer.from(imgPerfilBancoFisi);
+                const imgBase64 = imgBuffer.toString('base64');
+                const dataURL = `data:image/jpeg;base64,${imgBase64}`;
+                arquivo.imagem= dataURL;
+           }} %>
+       %>
 
         <div class="digitar">
-        <p>Bem-vindo! <b>nome usuario</b></p>
+        <p>Bem-vindo! <b><%= autenticado %></b></p>
          </div>
         
     

@@ -33,11 +33,11 @@ module.exports = class UsuarioDAL {
                 });
         });
     };
-    
+
     findUserEmailFisi(dadosForm) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM pessoaf WHERE emailFisico = ? or senhaFisico = ?",
-            [dadosForm.emailFisico, dadosForm.senhaFisico],
+            this.conexao.query("SELECT * FROM pessoaf WHERE emailFisico = ?",
+            [dadosForm.emailFisico],
                 function (error, elements) {
                     if (error) {
                         return reject(error);
@@ -50,8 +50,8 @@ module.exports = class UsuarioDAL {
 
     findUserEmailJuri(dadosForm) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT * FROM pessoaj WHERE emailJuridico = ? or senhaJuridico = ?",
-            [dadosForm.emailJuridico, dadosForm.senhaJuridico],
+            this.conexao.query("SELECT * FROM pessoaj WHERE emailJuridico = ?",
+            [dadosForm.emailJuridico],
                 function (error, elements) {
                     if (error) {
                         return reject(error);

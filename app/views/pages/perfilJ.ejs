@@ -13,7 +13,9 @@
     <title>Perfil </title>
 </head>
 
+<body>
     
+<body> 
     <body>
         <section id="começo">
     
@@ -142,6 +144,9 @@
     </section>
        
     </div>
+
+
+
 <main>
 
     <div  class="retorno">
@@ -153,7 +158,7 @@
         <div class="perfil-usuario-header">
           
                 <div class="perfil-usuario-avatar">
-                    <img id="imagem-de-fundo1" src="img/perfil/perfil.png" alt="img-avatar1">
+                    <img id="imagem-de-fundo1" src="<%= arquivo.imagem %>" alt="img-avatar1">
             </div>
         </div>
         <div class="perfil-usuario-body">
@@ -162,10 +167,15 @@
             </div>
             <a  onclick="window.location='/perfileditJ'" id="editar">Editar perfil</a>
 
-           
-    </section>
 
-        <h1 class="name">NOME_USUARIO</h1>
+      
+    
+
+           
+        </section>
+
+        <H1  class="name"  value="valores.nomeJuridico">NOME_USUARIO</H1>
+        <p   class="empresas" value="valores.cnpj">CNPJ_USUARIO</p>
         <h3 class="empresas">Nome_empresa</h3>
 
 
@@ -181,7 +191,7 @@
             <div class="informaçao">
                 <box-icon name='map' class="informaçao-icone"></box-icon>
                 <h3>Localização</h3>
-                <p>localização_usuario</p>
+                <p value="valores.enderecoJuridico">localização_usuario</p>
             </div>
             <div class="informaçao">
                 <box-icon  name='purchase-tag-alt' class="informaçao-icone"></box-icon>
@@ -222,13 +232,13 @@
                 <div class="informaçao">
                     <box-icon name='envelope' class="informaçao-icone"></box-icon>
                     <h3>Email</h3>
-                    <p>email_usuario</p>
+                    <p value="valores.emailJuridico">email_usuario</p>
                 </div>
               
     <div class="informaçao">
         <box-icon  name='phone' class="informaçao-icone"></box-icon>
         <h3>Telefone</h3>
-        <p>telefone_usuario</p>
+        <p value="valores.telJuridico">telefone_usuario</p>
     </div>
         </div>
 
@@ -250,20 +260,12 @@
 
             }
         </script>
- 
-
-       
-  
-
-
 
 
 
     
   
-</main>
-
-    
+</main>    
     
 <footer>
     
@@ -301,10 +303,5 @@
   
   </footer>
 </body>
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-<script src="/app/public/js/link-button.js"></script>
-<script src="/js/home.js"></script>
-
 
 </html>

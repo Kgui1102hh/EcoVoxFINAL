@@ -1,21 +1,17 @@
-function validarFor(){
-    var  data = document.getElementById("data").value;
-    var nome = document.getElementById("nome").value;
-    var email = document.getElementById("email").value;
-    var senha = document.getElementById("senha").value;
-   
-    
-
-    if  (nome == "" || email == "" || senha == "" || data == ""){
-        alert("Por favor, preencha todos os campos.");
-       
-    }
-
-    else if(senha < 8){
-        alert(" Sua senha é muito curta ;-; (8 min).");
-    }
-   else if ( senha > 8){
-   
-   }
-    
+function notify(titulo, texto, tipo, posicao) {
+    new Notify({
+        status: tipo,
+        title: titulo,
+        text:texto ,
+        effect: 'fade',
+        speed: 300,
+        showIcon: true,
+        showCloseButton: true,
+        autoclose: true,
+        autotimeout: 3000,
+        gap: 20,
+        distance: 20,
+        type: 1,
+        position:posicao 
+    })
 }

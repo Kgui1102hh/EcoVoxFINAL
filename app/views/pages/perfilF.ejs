@@ -13,6 +13,7 @@
     <title>Perfil </title>
 </head>
 
+<body>
     
 <body>
     <section id="começo">
@@ -142,36 +143,42 @@
 </section>
    
 </div>
-
-
-
 <main>
 
     <div  class="retorno">
-        <box-icon name='chevron-left' onclick="window.location='/homeLF'" color='#616162' class="Box-seta" ></box-icon>
-        <p onclick="window.location='/homeLF'" >Voltar</p>
+        <box-icon name='chevron-left' onclick="window.location='/homeLF'" color='#616162' class="Box-seta"></box-icon>
+        <p onclick="window.location='/homeLF'">Voltar</p>
     </div>
-
+    
+    <% 
+       let arquivo={"imagem":"imagem/img-perfil.png"} ;
+       if(imgPerfilPastaFisi !=null){ 
+            arquivo.imagem = imgPerfilPastaFisi;
+       }else if(imgPerfilBancoFisi !=null){ 
+            const imgBuffer = Buffer.from(imgPerfilBancoFisi);
+            const imgBase64 = imgBuffer.toString('base64');
+            const dataURL = `data:image/jpeg;base64,${imgBase64}`;
+            arquivo.imagem = dataURL;
+       } 
+   %>
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
           
-                <div class="perfil-usuario-avatar">
-                    <img id="imagem-de-fundo1" src="img/perfil/perfil.png" alt="img-avatar1">
+            <div class="perfil-usuario-avatar">
+                <img id="imagem-de-fundo1" src="<%= arquivo.imagem %>" alt="img-avatar1">
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo"></h3>
             </div>
             <a  onclick="window.location='/perfileditF'" id="editar">Editar perfil</a>
 
 
-     
+       
 
            
         </section>
-
-        <h1 class="name">NOME_USUARIO</h1>
+        <H1 value="valores.nomeFisico">NOME_USUARIO</H1>
         <h3 class="empresas"></h3>
 
 
@@ -203,13 +210,13 @@
                 <div class="informaçao">
                     <box-icon name='envelope' class="informaçao-icone"></box-icon>
                     <h3>Email</h3>
-                    <p>email_usuario</p>
+                    <p value="valores.emailFisico">email_usuario</p>
                 </div>
               
     <div class="informaçao">
         <box-icon  name='phone' class="informaçao-icone"></box-icon>
         <h3>Telefone</h3>
-        <p>telefone_usuario</p>
+        <p value="valores.telFisico">telefo_usuario</p>
     </div>
         </div>
 
@@ -231,16 +238,11 @@
 
             }
         </script>
- 
-
-       
-  
 
     
   
 </main>
 
-    
     
 <footer>
     
@@ -278,10 +280,5 @@
   
   </footer>
 </body>
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-<script src="/app/public/js/link-button.js"></script>
-<script src="/js/home.js"></script>
-
 
 </html>

@@ -34,14 +34,31 @@ var storagePasta = multer.diskStorage({
 var upload = multer({ storage: storagePasta });
 
 
-router.get("/", verificarUsuAutenticado, function (req, res) {
+router.get("/loginF", verificarUsuAutenticado, async function (req, res) {
   req.session.autenticado.login = req.query.login;
   res.render("pages/loginF", req.session.autenticado);
 });
-router.get("/", verificarUsuAutenticado, function (req, res) {
+
+router.get("/loginJ", verificarUsuAutenticado, async function (req, res) {
   req.session.autenticado.login = req.query.login;
   res.render("pages/loginJ", req.session.autenticado);
 });
+
+router.get("/perfilF", verificarUsuAutenticado, async function (req, res) {
+  if (req.session.autenticado.autenticado == null) {
+    res.render("pages/loginF")
+  } else {
+    res.render("pages/perfilF",{autenticado: req.session.autenticado, retorno: null, erros: null})
+  }
+})
+
+router.get("/perfilJ", verificarUsuAutenticado, async function (req, res) {
+  if (req.session.autenticado.autenticado == null) {
+    res.render("pages/loginJ")
+  } else {
+    res.render("pages/perfilJ",{autenticado: req.session.autenticado, retorno: null, erros: null})
+  }
+})
 
 router.get("/sair", limparSessao, function (req, res) {
   res.redirect("/");
@@ -77,19 +94,23 @@ router.get('/carrinho', function (req, res) {
   res.render('pages/carrinho');
 });
 
+router.get("/loginF", function (req, res) {
+  res.render("pages/loginF", { listaErros: null, dadosNotificacao: null, erros: null, valores: {"senhaFisico":"","emailFisico":""}});
+});
+
 router.get('/loginJ', function (req, res) {
-  res.render('pages/loginJ');
+  res.render('pages/loginJ', { listaErros: null, dadosNotificacao: null, erros: null, valores: {"senhaJuridico":"","emailJuridico":""}});
 });
 router.get('/loja', function (req, res) {
   res.render('pages/loja');
 });
 
 router.get('/homeLF', function (req, res) {
-  res.render('pages/homeLF');
+  res.render('pages/homeLF', { listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeFisico":""}});
 });
 
 router.get('/homeLJ', function (req, res) {
-  res.render('pages/homeLJ');
+  res.render('pages/homeLJ', { listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeJuridico":""}});
 });
 
 router.get('/Termos', function (req, res) {
@@ -111,22 +132,21 @@ router.get('/criacaoProduto', function (req, res) {
   res.render('pages/criacaoProduto');
 });
 router.get('/perfilF', function (req, res) {
-  res.render('pages/perfilF');
+  res.render('pages/perfilF', { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });
 });
 router.get('/perfileditF', function (req, res) {
-  res.render('pages/perfileditF');
+  res.render('pages/perfileditF', { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });
 });
 router.get('/perfilJ', function (req, res) {
-  res.render('pages/perfilJ');
+  res.render('pages/perfilJ', { listaErros: null, dadosNotificacao: null, valores: { nomeJuridico: "", cnpj: "", emailJuridico: "", senhaJuridico: "", telJuridico: "", enderecoJuridico: "", imgPerfilPastaJuri: "" } });
 });
 router.get('/perfileditJ', function (req, res) {
-  res.render('pages/perfileditJ');
+  res.render('pages/perfileditJ', { listaErros: null, dadosNotificacao: null, valores: { nomeJuridico: "", cnpj: "", emailJuridico: "", senhaJuridico: "", telJuridico: "", enderecoJuridico: "", imgPerfilPastaJuri: "" } });
 });
 
 router.get("/cadastroF", function (req, res) {
-  res.render("pages/cadastroF.ejs", { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "" } });
+  res.render("pages/cadastroF", { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "" } });
 });
-
 
 router.post("/cadastroFpp",
   body("nomeFisico")
@@ -169,48 +189,32 @@ router.post("/cadastroFpp",
     }
   })
 
-  router.get("/cadastroFp/:id", 
-  function(req, res ){
-    res.locals.moment = moment;
-      conexao.query("select * from pessoaf WHERE ?",
-      {"idFisico":req.params.id},
-        function(error, results){
-          if (error) throw error;
-            res.render("pages/cadastroF", { dados: null, erros: null,
-            perfil:results });
-        });
-});
 // LOGIN FÍSICO
 
-
-router.get("/loginF", function (req, res) {
-  res.locals.erroLogin = null
-  res.render("pages/loginF", { listaErros: null });
+  router.post(
+    "/loginfisico",
+    body("emailFisico")
+      .isEmail().withMessage("Digite um e-mail válido!"),
+    body("senhaFisico")
+      .isStrongPassword()
+      .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+  
+    gravarUsuFisicoAutenticado(usuarioDAL, bcrypt),
+    
+    function (req, res) {
+      const erros = validationResult(req);
+      if (!erros.isEmpty()) {
+        
+        return res.render("pages/loginF", { listaErros: erros, dadosNotificacao: null, autenticado: null })
+      }
+      if (req.session.autenticado != null) {
+        
+        res.redirect("/homeLF");
+      } else {
+        res.render("pages/loginF", { listaErros: null, autenticado: req.session.autenticado, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "E-mail e/ou senha inválidos!", tipo: "error" } })
+      }
 });
-
-router.post(
-  "/loginfisico",
-  body("emailFisico")
-    .isEmail().withMessage("Digite um e-mail válido!"),
-  body("senhaFisico")
-    .isStrongPassword()
-    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
-  gravarUsuFisicoAutenticado(usuarioDAL, bcrypt),
-  function (req, res) {
-    const erros = validationResult(req);
-    if (!erros.isEmpty()) {
-      console.log(erros)
-      return res.render("pages/loginF", { listaErros: erros, dadosNotificacao: null })
-    }
-    if (req.session.autenticacao != null) {
-      //mudar para página de perfil quando existir
-      res.render("pages/perfilF");
-      res.redirect("/?loginF=logado");
-    } else {
-      res.render("pages/loginF", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
-    }
-  });
-
+  
 
 // CADASTRO JURIDICO
 
@@ -265,38 +269,35 @@ router.post("/cadastrojuri",
 
 // LOGIN JURIDICO
 
-
-router.get("/loginJ", function (req, res) {
-  res.locals.erroLogin = null
-  res.render("pages/loginJ", { listaErros: null });
-});
-
 router.post(
-  "/loginJ",
-  body("cnpj")
-    .isLength({ min: 14, max: 14 }).withMessage("O CNPJ deve ter 14 dígitos!"),
+  "/loginjuri",
+  body("emailJuridico")
+    .isEmail().withMessage("Digite um e-mail válido!"),
   body("senhaJuridico")
     .isStrongPassword()
-    .withMessage("A senha deve ter no mínimo 8 caracteres (mínimo 1 letra maiúscula, 1 caractere especial e 1 número)"),
+    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
 
   gravarUsuJuridicoAutenticado(usuarioDAL, bcrypt),
+  
   function (req, res) {
     const erros = validationResult(req);
     if (!erros.isEmpty()) {
-      return res.render("pages/loginJ", { listaErros: erros, dadosNotificacao: null })
+      console.log(erros)
+      return res.render("pages/loginJ", { listaErros: erros, dadosNotificacao: null, autenticado: null })
     }
-    if (req.session.autenticacao != null) {
-      //mudar para página de perfil quando existir
-      res.render("pages/perfilJ");
-      res.redirect("/?loginJ=logado");
+    if (req.session.autenticado != null) {
+      
+      res.redirect("/homeLJ");
     } else {
-      res.render("pages/loginJ", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
+      res.render("pages/loginJ", { listaErros: null, autenticado: req.session.autenticado, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "E-mail e/ou senha inválidos!", tipo: "error" } })
     }
-  });
+});
+
+
 
 // PERFIL FÍSICO
 
-router.get("/perfilF", verificarUsuAutorizado([1, 2, 3], "pages/restrito"), async function (req, res) {
+router.get("/perfilF", async function (req, res) {
   try {
     let results = await usuarioDAL.findIDFisi(req.session.autenticado.id);
     console.log(results);
@@ -316,7 +317,7 @@ router.get("/perfilF", verificarUsuAutorizado([1, 2, 3], "pages/restrito"), asyn
   }
 });
 
-router.post("/perfilF", upload.single('imagem-perfilF'),
+router.post("/perfileditFisico", upload.single('imagem-perfilF'),
   body("nomeFisico")
     .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
   body("emailFisico")
@@ -326,7 +327,6 @@ router.post("/perfilF", upload.single('imagem-perfilF'),
     .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
   body("telFisico")
     .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
-  verificarUsuAutorizado([1, 2, 3], "pages/restrito"),
   async function (req, res) {
     const erros = validationResult(req);
     console.log(erros)
@@ -349,7 +349,7 @@ router.post("/perfilF", upload.single('imagem-perfilF'),
       if (!req.file) {
         console.log("Falha no carregamento");
       } else {
-        caminhoArquivo = "imagem/perfil/" + req.file.filename;
+        caminhoArquivo = "imagem/perfilF/" + req.file.filename;
         dadosForm.imgPerfilPastaFisi = caminhoArquivo
       }
       console.log(dadosForm);
@@ -382,45 +382,44 @@ router.post("/perfilF", upload.single('imagem-perfilF'),
 
 // PERFIL JURIDICO
 
-router.get("/perfilJuridico", verificarUsuAutorizado([1, 2, 3], "pages/restrito"), async function (req, res) {
+router.get("/perfilJ", async function (req, res) {
   try {
     let results = await usuarioDAL.findIDJuri(req.session.autenticado.id);
     console.log(results);
     let campos = {
-      nomeJuridico: results[0].nomeFisico, emailFisico: results[0].emailJuridico,
+      nomeJuridico: results[0].nomeJuridico, emailJuridico: results[0].emailJuridico,
       imgPerfilPastaJuri: results[0].imgPerfilPastaJuri, imgPerfilBancoJuri: results[0].imgPerfilBancoJuri,
       telJuridico: results[0].telJuridico, cnpj: results[0].cnpj, enderecoJuridico: results[0].enderecoJuridico,
       senhaJuridico: ""
     }
-    res.render("pages/perfilJuridico", { listaErros: null, dadosNotificacao: null, valores: campos })
+    res.render("pages/perfilJ", { listaErros: null, dadosNotificacao: null, valores: campos })
   } catch (e) {
-    res.render("pages/perfilJuridico", {
+    res.render("pages/perfilJ", {
       listaErros: null, dadosNotificacao: null, valores: {
-        imgPerfilBancoFisi: "", imgPerfilPastaFisi: "", nomeFisico: "", emailFisico: "",
-        telFisico: "", senhaFisico: "", cnpj: "", enderecoJuridico: ""
+        imgPerfilBancoJurii: "", imgPerfilPastaJuri: "", nomeJuridico: "", emailJuridico: "",
+        telJuridico: "", senhaJuridico: "", cnpj: "", enderecoJuridico: ""
       }
     })
   }
 });
 
-router.post("/perfilJuridico", upload.single('imagem-perfilJuridico'),
+router.post("/perfileditJuridico", upload.single('imagem-perfilJuridico'),
   body("nomeJuridico")
     .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
   body("cnpj")
-    .isLength({ min: 11, max: 14 }).withMessage("O CNPJ deve ter 14 dígitos!"),
+    .isLength({ min: 10, max: 15 }).withMessage("O CNPJ deve ter 14 dígitos!"),
   body("emailJuridico")
     .isEmail().withMessage("Digite um e-mail válido!"),
   body("senhaJuridico")
     .isStrongPassword()
     .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
   body("telJuridico")
-    .isLength({ min: 10, max: 10 }).withMessage("O telefone tem 10 digitos!"),
-  verificarUsuAutorizado([1, 2, 3], "pages/restrito"),
+    .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
   async function (req, res) {
     const erros = validationResult(req);
     console.log(erros)
     if (!erros.isEmpty()) {
-      return res.render("pages/perfilJuridico", { listaErros: erros, dadosNotificacao: null, valores: req.body })
+      return res.render("pages/perfilJ", { listaErros: erros, dadosNotificacao: null, valores: req.body })
     }
     try {
       var dadosForm = {
@@ -439,7 +438,7 @@ router.post("/perfilJuridico", upload.single('imagem-perfilJuridico'),
       if (!req.file) {
         console.log("Falha no carregamento");
       } else {
-        caminhoArquivo = "imagem/perfilJuridico/" + req.file.filename;
+        caminhoArquivo = "imagem/perfilJ/" + req.file.filename;
         dadosForm.imgPerfilPastaJuri = caminhoArquivo
       }
       console.log(dadosForm);
