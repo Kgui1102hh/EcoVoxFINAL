@@ -6,7 +6,7 @@ import router from "./app/routes/router.cjs";
 
 var rotas = router;
 
-// Load variables
+
 dotenv.config();
 
 // Start Server
