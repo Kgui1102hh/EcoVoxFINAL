@@ -34,7 +34,9 @@ function gravarUsuFisicoAutenticado(usuarioDAL, bcrypt) {
                     var autenticado = {
                         autenticado: results[0].nomeFisico,
                         id: results[0].idFisico,
-                        imgPerfilPastaFisi:"../public/imagem/img-perfil.png",
+                        telFisico: results[0].telFisico,
+                        emailFisico: results[0].emailFisico,
+                        imgPerfilPastaFisi:"../public/imagem/Artigo-Caua.png",
                         imgPerfilBancoFisi:results[0].imgPerfilBancoFisi
                     };
                 }

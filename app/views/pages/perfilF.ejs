@@ -150,22 +150,11 @@
         <p onclick="window.location='/homeLF'">Voltar</p>
     </div>
     
-    <% 
-       let arquivo={"imagem":"imagem/img-perfil.png"} ;
-       if(imgPerfilPastaFisi !=null){ 
-            arquivo.imagem = imgPerfilPastaFisi;
-       }else if(imgPerfilBancoFisi !=null){ 
-            const imgBuffer = Buffer.from(imgPerfilBancoFisi);
-            const imgBase64 = imgBuffer.toString('base64');
-            const dataURL = `data:image/jpeg;base64,${imgBase64}`;
-            arquivo.imagem = dataURL;
-       } 
-   %>
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
           
             <div class="perfil-usuario-avatar">
-                <img id="imagem-de-fundo1" src="<%= arquivo.imagem %>" alt="img-avatar1">
+                <img id="imagem-de-fundo1" alt="img-avatar1">
             </div>
         </div>
         <div class="perfil-usuario-body">
@@ -178,7 +167,7 @@
 
            
         </section>
-        <H1 value="valores.nomeFisico">NOME_USUARIO</H1>
+        <H1 class="name"><%= autenticado.autenticado %></H1>
         <h3 class="empresas"></h3>
 
 
@@ -191,15 +180,19 @@
 
         <div class="conteudo-info">
             <div class="informaçao">
-                <box-icon name='map' class="informaçao-icone"></box-icon>
-                <h3>Localização</h3>
-                <p>localização_usuario</p>
-            </div>
-            <div class="informaçao">
                 <box-icon  name='purchase-tag-alt' class="informaçao-icone"></box-icon>
                 <h3>Loja</h3>
                 <p>loja_usuario</p>
            </div>
+
+           <div class="produto-usuario">
+            <div class="criar-produtos">
+                <h1><strong>+</strong>POSTAR <br>PRODUTOS</h1>
+                <img src="/imagen/home-ciencia.png">
+         </div>
+
+        </div>
+
       </div>
 
           
@@ -210,13 +203,13 @@
                 <div class="informaçao">
                     <box-icon name='envelope' class="informaçao-icone"></box-icon>
                     <h3>Email</h3>
-                    <p value="valores.emailFisico">email_usuario</p>
+                    <p><%= autenticado.emailFisico %></p>
                 </div>
               
     <div class="informaçao">
         <box-icon  name='phone' class="informaçao-icone"></box-icon>
         <h3>Telefone</h3>
-        <p value="valores.telFisico">telefo_usuario</p>
+        <p><%= autenticado.telFisico %></p>
     </div>
         </div>
 
@@ -246,6 +239,7 @@
     
 <footer>
     
+    // TIRAR ESTA SEÇÃO, E CORRIGIR O CSS
     <div class="div-faça-parte">
       <div class="faça-parte">
           <p>Faça parte da Ecovox e vamos tornar o Brasil mais ecológico juntos!</p>
@@ -253,7 +247,7 @@
           <img src="/imagen\home-correto.png" >
       </div>
   <div>
-   
+    // TIRAR ESTA SEÇÃO, E CORRIGIR O CSS
   
   
       <div class="contato">

@@ -36,8 +36,8 @@ app.get("/", (req, res) => {
   res.render("pages/home.ejs");
 });
 // Success
-app.get("/successo", (req, res) => {
-  res.render("pages/sucesso.ejs", { root: "./app/views/pages" });
+app.get("/successoLF", (req, res) => {
+  res.render("pages/sucessoLF.ejs", { root: "./app/views/pages" });
 });
 // Cancel
 app.get("/cancelar", (req, res) => {
@@ -69,7 +69,7 @@ app.post("/stripe-checkout", async (req, res) => {
   const session = await stripeGateway.checkout.sessions.create({
     payment_method_types: ["boleto", "card"],
     mode: "payment",
-    success_url: `${DOMAIN}/sucesso`,
+    success_url: `${DOMAIN}/sucessoLF`,
     cancel_url: `${DOMAIN}/cancelar`,
     line_items: lineItems,
     billing_address_collection: "required",
@@ -102,7 +102,7 @@ app.post("/stripe-checkout", async (req, res) => {
   const session = await stripeGateway.checkout.sessions.create({
     payment_method_types: ["boleto", "card"],
     mode: "payment",
-    success_url: `${DOMAIN}/sucesso`,
+    success_url: `${DOMAIN}/sucessoLF`,
     cancel_url: `${DOMAIN}/homeL`,
     line_items: lineItems,
     billing_address_collection: "required",

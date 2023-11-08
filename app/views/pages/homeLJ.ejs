@@ -30,9 +30,9 @@
       
         <div class="nav-home">
             <ul>
-                <li><a onclick="window.location='/homeLF'">Home</a> </li>
-                <li><a onclick="window.location='/artigos'">Blog</a> </li>
-                <li onclick="window.location='/loja'"><a>Loja</a> </li>
+                <li><a onclick="window.location='/homeLJ'">Home</a> </li>
+                <li><a onclick="window.location='/artigosLJ'">Blog</a> </li>
+                <li onclick="window.location='/lojaLJ'"><a>Loja</a> </li>
                 <li><a>Sair</a> </li>
                
             
@@ -41,7 +41,7 @@
 
 
         <div class="digitar">
-            <p>Bem-vindo! <b value="">nome usuario</b></p>
+            <p>Bem-vindo! <b ><%= autenticado.autenticado %></b></p>
              </div>
             
         
@@ -99,7 +99,7 @@
     
                            
                            
-                             <a  onclick="window.location='/homeLF'">
+                             <a  onclick="window.location='/homeLJ'">
             
                             <i class='bx bx-home'></i>
     
@@ -116,7 +116,7 @@
             
                         <li class="list-item">
             
-                             <a  onclick="window.location='/artigos'">
+                             <a  onclick="window.location='/artigosLJ'">
                             
                              <i class='bx bx-user'></i>
         
@@ -138,7 +138,7 @@
             
                         <li class="list-logout">
         
-                            <a onclick="window.location='/loja'">
+                            <a onclick="window.location='/lojaLJ'">
             
                             <i class='bx bx-log-out'></i>
             
@@ -185,7 +185,7 @@
           recicláveis e artigos sobre a
            reciclagem do Brasil <br>em um lugar só!</p>
     
-        <button  onclick="window.location='/cadastroF'" class="bt"> QUERO MEU ACESSO </button>
+        <button  onclick="window.location='/cadastroJ'" class="bt"> QUERO MEU ACESSO </button>
     
         <img src="/imagen\home-correto.png" >
     
@@ -280,7 +280,7 @@
         </div>
      
      
-            <a onclick="window.location='/teste'" class="sobre">Ler sobre</a>
+            <a onclick="window.location='/testeLJ'" class="sobre">Ler sobre</a>
     
         
         
@@ -549,7 +549,7 @@
     
     
     <div class="Mais-itens">
-        <box-icon color="#009696" name='plus-medical'  onclick="window.location='/cadastroF'" ></box-icon>
+        <box-icon color="#009696" name='plus-medical'  onclick="window.location='/LojaLJ'" ></box-icon>
         <h4> Mais produtos</h4>
     </div>
     

@@ -82,12 +82,12 @@ router.get('/home', function (req, res) {
 router.get('/criacao', function (req, res) {
   res.render('pages/criacao');
 });
-router.get('/sucesso', function (req, res) {
-  res.render('pages/sucesso');
+router.get('/sucessoLF', function (req, res) {
+  res.render('pages/sucessoLF');
 });
 
-router.get('/Produto', function (req, res) {
-  res.render('pages/Produto');
+router.get('/ProdutoLF', function (req, res) {
+  res.render('pages/ProdutoLF');
 });
 
 router.get('/carrinho', function (req, res) {
@@ -101,13 +101,17 @@ router.get("/loginF", function (req, res) {
 router.get('/loginJ', function (req, res) {
   res.render('pages/loginJ', { listaErros: null, dadosNotificacao: null, erros: null, valores: {"senhaJuridico":"","emailJuridico":""}});
 });
-router.get('/loja', function (req, res) {
-  res.render('pages/loja');
+router.get('/lojaLF', function (req, res) {
+  res.render('pages/lojaLF');
 });
+router.get('/lojaLJ', function (req, res) {
+  res.render('pages/lojaLJ');
+});
+
 
 router.get('/homeLF', verificarUsuAutenticado, function (req, res) {
   req.session.autenticado.loginfisico = req.query.loginfisico;
-  res.render("pages/homeLF", {autenticado: req.session.autenticado, listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeFisico":""}});
+  res.render("pages/homeLF", { autenticado: req.session.autenticado, listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeFisico":""}});
 });
 
 router.get('/homeLJ', function (req, res) {
@@ -118,22 +122,30 @@ router.get('/Termos', function (req, res) {
   res.render('pages/Termos');
 });
 
-router.get('/Verificacao', function (req, res) {
-  res.render('pages/Verificacao');
+router.get('/VerificacaoLF', function (req, res) {
+  res.render('pages/VerificacaoLF');
 });
-
+router.get('/VerificacaoLJ', function (req, res) {
+  res.render('pages/VerificacaoLJ');
+});
 router.get('/teste', function (req, res) {
   res.render('pages/teste');
 });
 
-router.get('/artigos', function (req, res) {
-  res.render('pages/artigos');
+router.get('/artigosLF', function (req, res) {
+  res.render('pages/artigosLF');
 });
-router.get('/criacaoProduto', function (req, res) {
-  res.render('pages/criacaoProduto');
+router.get('/artigosLJ', function (req, res) {
+  res.render('pages/artigosLJ');
+});
+router.get('/criacaoProdutoLF', function (req, res) {
+  res.render('pages/criacaoProdutoLF');
+});
+router.get('/criacaoProdutoLJ', function (req, res) {
+  res.render('pages/criacaoProdutoLJ');
 });
 router.get('/perfilF', function (req, res) {
-  res.render('pages/perfilF', { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });
+  res.render('pages/perfilF', { listaErros: null, dadosNotificacao: null, autenticado: req.session.autenticado });
 });
 router.get('/perfileditF', function (req, res) {
   res.render('pages/perfileditF', { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });

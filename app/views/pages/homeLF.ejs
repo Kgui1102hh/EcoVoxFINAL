@@ -30,38 +30,17 @@
         <div class="nav-home">
             <ul>
                 <li><a onclick="window.location='/homeLF'">Home</a> </li>
-                <li><a onclick="window.location='/artigos'">Blog</a> </li>
-                <li onclick="window.location='/loja'"><a>Loja</a> </li>
+                <li><a onclick="window.location='/artigosLF'">Blog</a> </li>
+                <li onclick="window.location='/lojaLF'"><a>Loja</a> </li>
                 <li><a>Sair</a> </li>
                
             
             </ul>
         </div>
-        <% 
-        var autenticado = req.session.autenticado
-        if(autenticado){
-            if(loginfisico){%>
-           <script>
-               notify("Login efetuado com sucesso", "Olá <%=autenticado%>", "success", "center")                        
-           </script>
-           <% } 
-           let arquivo={"imagem":"imagem/img-perfil.png"} ;
-           if(imgPerfilPastaFisi !=null){ 
-                arquivo.imagem = imgPerfilPastaFisi;
-           }else if(imgPerfilBancoFisi !=null){ 
-                const imgBuffer = Buffer.from(imgPerfilBancoFisi);
-                const imgBase64 = imgBuffer.toString('base64');
-                const dataURL = `data:image/jpeg;base64,${imgBase64}`;
-                arquivo.imagem= dataURL;
-           } %>
-       %>
+        
 
         <div class="digitar">
-        <p>Bem-vindo! <b><%= autenticado %></b></p>
-
-        <% }else{ %>
-            <span>Olá visitante!</span>
-        <% } %>
+        <p>Bem-vindo! <b ><%= autenticado.autenticado %></b></p>
          </div>
         
     

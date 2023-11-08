@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/loja.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/b023fbb394.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <title>Loja</title>
+</head>
+<body>
+    <section id="começo">
+
+        <div class="div-logo">
+            <img src="/imagen\logo-home.png" class="logo" id="lgo">
+           </div>
+      
+
+
+           <div class="search-box">
+            <input type="text" class="search-text">
+            <a class="search-btn">
+            <box-icon class="icone-lupa" name='search-alt-2' color='#f2f2f2' widht="60px" height="60px" ></box-icon>
+            </a>
+        </div>
+
+        
+
+        <div class="nav-home">
+            <ul>
+                <li><a onclick="window.location='/homeLF'">Home</a> </li>
+                <li><a onclick="window.location='/artigosLF'">Blog</a> </li>
+                <li onclick="window.location='/lojaLF'"><a>Loja</a> </li>
+                <li><a>Sair</a> </li>
+               
+            
+            </ul>
+        </div>
+    
+
+
+        <box-icon onclick="window.location='perfilF'" name='user-circle' color='#ececec' class="perfil" onclick="window.location='/perfilF'"  ></box-icon>
+
+
+    
+    
+    
+        <div class="conteiner" id="cos">
+      
+            <div class="hamburguer" id="btn-mobile">
+                <div class="line1" id="line1"></div>
+                <div class="line2" id="line2"></div>
+                <div class="line3" id="line3"></div>
+                <div class="line4" id="line4"></div>
+            
+    
+                    <img src="/imagen\home-Proximo.png" class="line6" id="line6">
+            </div>
+        </div>
+    
+        
+    
+    <section>
+    
+        <div class="sidebar">
+            
+            <div class="logo-content">
+            
+                     <ul class="list">
+
+                        <box-icon name='x' color="#f2f2f2" class="close-menu"></box-icon>
+
+                        <img src="/imagen\logo-home.png" id="logo">
+                         
+    
+                        <hr>
+
+                        <div class="search-box2">
+                            <input type="text" class="search-text2">
+                                <a class="search-btn2">
+                         <box-icon class="icone-lupa2" name='search-alt-2' color='#f2f2f2' widht="60px" height="60px" ></box-icon>
+                               </a>
+                            </div>
+    
+            
+                         <li class="list-item active">
+    
+                           
+                           
+                             <a  onclick="window.location='/homeLF'">
+            
+                            <i class='bx bx-home'></i>
+    
+    
+                             <img src="/imagen\home-home.png" class="img_home" id="home">
+                             <span class="links-name">Home</span>
+    
+            
+                             </a>
+            
+                             <span class="tooltip">Home</span>
+            
+                        </li>
+            
+                        <li class="list-item">
+            
+                             <a  onclick="window.location='/artigosLF'">
+                            
+                             <i class='bx bx-user'></i>
+        
+                              <img src="/imagen\home-livro.png" class="img_home" id="livro">
+                              <span class="links-name" id="livro">Artigos</span>
+            
+                             </a>
+            
+                              <span class="tooltip">Artigos</span>
+            
+                        </li>
+            
+                      
+            
+                    </ul>
+    
+    
+                    <ul class="list-logout">
+            
+                        <li class="list-logout">
+        
+                            <a onclick="window.location='/lojaLF'">
+            
+                            <i class='bx bx-log-out'></i>
+            
+             
+                            <img src="/imagen\home-loja.png" class="img_home" id="loja">
+                            <span class="links-name">Loja</span>
+            
+                            </a>
+    
+                            <span class="tooltip">Loja</span>
+            
+                        </li>
+                    </ul>
+            
+             </div>
+        </div>
+       
+    </section>
+
+</section>
+   
+</div>
+<main>
+
+    <div  class="retorno">
+        <box-icon name='chevron-left' onclick="window.location='/homeLF'" color='#616162' class="Box-seta" ></box-icon>
+        <a onclick="window.location='/homeLF'">Voltar</a>
+    </div>
+
+    <div class="crie_sua_loja">
+           
+    <h1>INVISTA  EM SI </h1>
+    <h3>Divilgue seus prodtuos</h3>
+        <img src="/imagen\loja-propaganda.png">
+       
+
+
+    </div>
+    
+  
+
+
+    <ul class="links">
+    <i class="fa-solid fa-cart-shopping" id="car-icon"></i>
+    </ul>
+
+<div class="carti">
+    <h2 class="cart-title">Seu carrinho</h2>
+    <div class="cart-content">
+    </div>
+    <div class="total">
+        <div class="total-title">Total</div>
+        <div class="total-price">R$0</div>
+    </div>
+    <button type="button" class="btn-buy">Compre agora</button>
+    <i class='bx bx-x' id="close-cart"></i>
+</div>
+        
+        
+   
+</header>
+
+<section class="shop-container">
+    <h2 class="section-title">Loja</h2>
+    <h3 class="section-title-sub">Mais recentes</h3>
+
+    <div class="shop-content">
+
+        <div class="product-box">
+            <img src="/imagen\home-escova-de-prato.png" alt="" class="product">
+            <h2 class="product-title">Escova de prato sustentável</h2>
+            <span class="price">R$25</span>
+            <i class='bx bx-shopping-bag add-cart' ></i>
+        </div>
+
+        <div class="product-box">
+            <img src="/imagen\home-produto.png" alt="" class="product">
+            <h2 class="product-title">Camiseta <BR> Biodegradavel</h2>
+            <span class="price">R$100</span>
+            <i class='bx bx-shopping-bag add-cart'></i>  
+        </div>
+
+        <div class="product-box">
+            <img src="/imagen\home-ciencia.png" alt="" class="product">
+            <h2 class="product-title">Camiseta de algas</h2>
+            <span class="price">R$50</span>
+            <i class='bx bx-shopping-bag add-cart'></i>
+            
+        </div>
+
+        <div class="product-box">
+            <img src="/imagen\home-cesto-de-papel.png" alt="" class="product">
+            <h2 class="product-title">Cesto de pepel sustentável</h2>
+            <span class="price">R$35</span>
+            <i class='bx bx-shopping-bag add-cart'></i>
+            
+        </div>
+        <div class="product-box">
+            <img src="/imagen\home-produto1.png" alt="" class="product">
+            <h2 class="product-title">Cadeira </h2>
+            <span class="price">R$150</span>
+            <i class='bx bx-shopping-bag add-cart'></i>
+            
+        </div>
+        <div class="product-box">
+            <img src="/imagen\home-produto2.png" alt="" class="product">
+            <h2 class="product-title">Colher Madeira</h2>
+            <span class="price">R$10</span>
+            <i class='bx bx-shopping-bag add-cart'></i>
+            
+        </div>
+
+        <div class="product-box">
+            <img src="/imagen\home-produto3.png" alt="" class="product" onclick="window.location='/ProdutoLF'" >
+            <h2 class="product-title">Vaso artesanal (modelo gato)</h2>
+            <span class="price">R$23</span>
+            <i class='bx bx-shopping-bag add-cart'></i>
+            
+        </div>
+        <div class="product-box">
+            <img src="/imagen\home-produto4.png" alt="" class="product">
+            <h2 class="product-title">Vaso artesanal</h2>
+            <span class="price">R$30</span>
+            <i class='bx bx-shopping-bag add-cart'></i>  
+        </div>
+
+
+    </div>
+</section>
+
+
+
+    
+<footer>
+    
+    <div class="div-faça-parte">
+      <div class="faça-parte">
+          <p>Faça parte da Ecovox e vamos tornar o Brasil mais ecológico juntos!</p>
+          <button  onclick="window.location='/cadastroF'">  ACESSO </button>
+          <img src="/imagen\home-correto.png" >
+      </div>
+  <div>
+   
+  
+  
+      <div class="contato">
+          <h3>Contato</h3>
+          <p>ecovox@gmail.com<br>
+              (XX) X XXXX-XXXX
+          </p>
+      </div>    
+  
+      <hr>
+  
+      <a onclick="window.location='/Termos'">Política de Privacidade</a>
+      <a>Termos & Condições</a>
+      
+  
+   <img src="/imagen\home-footer-fundo.png" id="footer-fundo">
+  
+   <p>2023 EcoVox </p>
+  
+   <img src="/imagen\home-registrado.png" id="registrado"> 
+  
+     
+  
+  
+  </footer>
+<script src="/js/home.js"></script>
+<script src="/js/loja.js"></script>
+<script src="/js/cart.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+
+
+
+</html>
+<script src="/app/public/js/loja.js"></script>
+<script src="/app/public/js/home.js"></script>
+<script src="/app/public/js/cart.js"></script>
