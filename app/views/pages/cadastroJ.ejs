@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastroJ</title>
     <link rel="stylesheet" type="text/css" href="/css\cadastroj.css" media="screen" />
-  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="/js/cadastroj.js"></script>
 </head>
 <body>
 <section>
@@ -117,13 +121,11 @@
         <div class="social">
             <input type="name" placeholder="Nome/Razão Social" value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>" id="nomeJuridico" name="nomeJuridico" required="required">
             <span> <%= msgErro.nomeJuridico %> </span>
-            <span>(min:3 - Max:20)</span><br>
         </div>
         <div>
             <b id="cnpj"></b>
             <input type="text" name="cnpj" placeholder="CNPJ" id="cnpj" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" value="<%= valores.cnpj %>" class="<%= avisoErro.cnpj %>">
             <span> <%= msgErro.cnpj %> </span>
-            <span>(O CNPJ deve ter 14 dígitos!)</span>
             <br>
             <script>  
                 function formatar(mascara, documento) {
@@ -164,7 +166,6 @@
         <div class="bem">
             <input type="password" id="senhaJuridico" placeholder="Senha" class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico" required="required"/>
             <span> <%= msgErro.senhaJuridico %> </span>
-            <span>( mín 8 caracteres e 1 especial, 1 letra maiúscula,  e 1 número')</span>
             <br>
         </div>
         <div class="button">
