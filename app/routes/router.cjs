@@ -105,8 +105,9 @@ router.get('/loja', function (req, res) {
   res.render('pages/loja');
 });
 
-router.get('/homeLF', function (req, res) {
-  res.render('pages/homeLF', { listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeFisico":""}});
+router.get('/homeLF', verificarUsuAutenticado, function (req, res) {
+  req.session.autenticado.loginfisico = req.query.loginfisico;
+  res.render("pages/homeLF", {autenticado: req.session.autenticado, listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeFisico":""}});
 });
 
 router.get('/homeLJ', function (req, res) {
