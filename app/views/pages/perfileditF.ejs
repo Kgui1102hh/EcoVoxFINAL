@@ -177,6 +177,10 @@
         <box-icon name='chevron-left' color='#616162' class="Box-seta"  onclick="window.location='/perfilF'"></box-icon>
         <p onclick="window.location='/perfilF'">Voltar</p>
     </div>
+
+    <h1 class="titulo-editar">Editar Perfil</h1>
+
+
     <section class="seccion-perfil-usuario">
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
@@ -196,6 +200,9 @@
             <form action="/perfiledit" method="post">
 
             <div class="alteraçao-inpults">
+
+                <h1>Informações Básicas</h1>
+
             <div class="input-box">
                 <input type="text" >
                 <span>Nome</span>
@@ -220,8 +227,8 @@
             </div>
 
 
-                <a href="/deletar" class="delete-button"><i class="fas fa-trash-alt"></i>Excluir conta</a>
-                <input type="submit" value="Alterar" class="alte">
+            <a href="/deletar" class="delete-button">Cancelar</a>
+                <input type="submit" value="Salvar" class="alte">
             </form>
           </div>
         </div>
