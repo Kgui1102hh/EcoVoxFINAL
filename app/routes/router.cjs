@@ -166,14 +166,14 @@ router.get("/cadastroF", function (req, res) {
 
 router.post("/cadastroFpp",
   body("nomeFisico")
-    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
+    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras, e máximo de 20."),
   body("emailFisico")
-    .isEmail().withMessage("Digite um e-mail válido!"),
+    .isEmail().withMessage("Digite um e-mail válido, como ecovox@gmail.com"),
   body("senhaFisico")
     .isStrongPassword()
-    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número."),
   body("telFisico")
-    .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
+    .isLength({ min: 10, max: 15 }).withMessage("O telefone possui 12 digitos, como (11) 98765-4321."),
   async function (req, res) {
     let dadosForm = {
       emailFisico: req.body.emailFisico,

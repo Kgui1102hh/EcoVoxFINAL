@@ -105,18 +105,17 @@
     <% } %>
 
         <div class="oi">
-            <input type="text" id="nomeFisico" name="nomeFisico" placeholder="Nome" class="nome" value="<%= valores.nomeFisico %>" class="<%= avisoErro.nomeFisico %>"/>
+            <input type="text" id="nomeFisico" name="nomeFisico" placeholder="Nome (Mínimo de 3 letras.)" class="nome" value="<%= valores.nomeFisico %>" class="<%= avisoErro.nomeFisico %>"/>
             <span > <%= msgErro.nomeFisico %> </span>
-            <span>(min:3 - Max:20)</span><br>
         </div>
 
         <div class="tudo">
-            <input type="text" id="emailFisico" placeholder="Email" class="email" name="emailFisico" value="<%= valores.emailFisico %>" class="<%= avisoErro.emailFisico %>" />
+            <input type="text" id="emailFisico" placeholder="E-mail (nome@email.com)" class="email" name="emailFisico" value="<%= valores.emailFisico %>" class="<%= avisoErro.emailFisico %>" />
             <span> <%= msgErro.emailFisico %> </span><br>
           
        
         <div class="fone">
-            <input type="text" class="form-control" id="telFisico" name="telFisico" maxlength="15" placeholder="Telefone" pattern="\(\d{2}\)\s*\d{5}-\d{4}" value="<%= valores.telFisico %>" class="<%= avisoErro.telFisico %>">
+            <input type="text" class="form-control" id="telFisico" name="telFisico" maxlength="15" placeholder="Telefone ((XX) XXXXX-XXXX)" value="<%= valores.telFisico %>" class="<%= avisoErro.telFisico %>">
             <span > <%= msgErro.telFisico %> </span><br>
         </div>
         <script>
@@ -132,9 +131,8 @@
         </script>
 
         <div class="bem">
-            <input type="password" id="senhaFisico" placeholder="Senha" name="senhaFisico" class="senha" value="<%= valores.senhaFisico %>" class="<%= avisoErro.senhaFisico %>"/>
-            <span> <%= msgErro.senhaFisico %> </span><br>
-            <span>( mín 8 caracteres e 1 especial, 1 letra maiúscula,  e 1 número')</span>
+            <input type="password" id="senhaFisico" placeholder="Senha (Min. 8, 1 maisculo, especial e número.)" name="senhaFisico" class="senha" value="<%= valores.senhaFisico %>" class="<%= avisoErro.senhaFisico %>"/>
+            <span><%= msgErro.senhaFisico %></span>
         </div>
        
         <div class="button">
