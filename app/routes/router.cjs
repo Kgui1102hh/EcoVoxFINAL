@@ -89,6 +89,9 @@ router.get('/sucessoLF', function (req, res) {
 router.get('/ProdutoLF', function (req, res) {
   res.render('pages/ProdutoLF');
 });
+router.get('/ProdutoLJ', function (req, res) {
+  res.render('pages/ProdutoLJ');
+});
 
 router.get('/carrinho', function (req, res) {
   res.render('pages/carrinho');
