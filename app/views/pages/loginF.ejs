@@ -12,6 +12,7 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
     <script src="/js/cadastrof.js"></script>
+    <script src="/js/loginf.js"></script>
 </head>
 <body>
 <section>
@@ -21,7 +22,7 @@
         <div class="borda"> 
             
             <a  onclick="window.location='/home'">
-                <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
+                <box-icon name='chevron-left'  onclick="window.location='/home'" color='#616162' class="seta" ></box-icon>
                 </a>
       
         <div class="logo1">
@@ -60,7 +61,7 @@
     <% 
             let avisoErro = {"emailFisico":"", "senhaFisico":""}
             let msgErro = {"emailFisico":"", "senhaFisico":""}
-            listaErros = ""
+            let listaErros = ""
                 if(listaErros){
                     listaErros.errors.forEach(function(itemErro){
                         if(itemErro.path == "emailFisico"){
@@ -76,14 +77,14 @@
        %>
     <form action="/loginfisico" method="post" id="form" class="form">
         <div class="input-box">
-            <input type="email" name="emailFisico"  id="emailFisico" required="required" class="email" class="<%= avisoErro.emailFisico %>">
+            <input type="text" name="emailFisico" id="emailFisico" class="email" class="<%= avisoErro.emailFisico %>" required="required">
             <span class="span-input">Email</span><br>
             <span>
                 <%= msgErro.emailFisico %>
             </span><br>
         </div>
         <div class="input-box">
-            <input type="password" id="senhaFisico"   class="<%= avisoErro.senhaFisico %>" name="senhaFisico" required="required"/>
+            <input type="password" id="senhaFisico"  class="<%= avisoErro.senhaFisico %>" name="senhaFisico" required="required"/>
             <span class="span-input">Senha</span><br>
             <span>
                 <%= msgErro.senhaFisico %>
@@ -95,7 +96,7 @@
 
         
     <div class="button">
-        <button type="submit" onclick="window.location='/homeL'" class="butao">Entrar</button>
+        <button type="submit" class="butao">Entrar</button>
     </div>
 
    
