@@ -46,7 +46,7 @@ router.get("/loginJ", verificarUsuAutenticado, async function (req, res) {
 
 router.get("/perfilF", verificarUsuAutenticado, async function (req, res) {
   if (req.session.autenticado.autenticado == null) {
-    res.render("pages/loginF")
+    res.render("pages/loginF", { listaErros: null, dadosNotificacao: null, erros: null, valores: {"senhaFisico":"","emailFisico":""}})
   } else {
     res.render("pages/perfilF",{autenticado: req.session.autenticado, retorno: null, erros: null})
   }
@@ -166,14 +166,14 @@ router.get("/cadastroF", function (req, res) {
 
 router.post("/cadastroFpp",
   body("nomeFisico")
-    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
+    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras, e máximo de 20."),
   body("emailFisico")
-    .isEmail().withMessage("Digite um e-mail válido!"),
+    .isEmail().withMessage("Digite um e-mail válido, como ecovox@gmail.com"),
   body("senhaFisico")
     .isStrongPassword()
-    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número."),
   body("telFisico")
-    .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
+    .isLength({ min: 10, max: 15 }).withMessage("O telefone possui 12 digitos, como (11) 98765-4321."),
   async function (req, res) {
     let dadosForm = {
       emailFisico: req.body.emailFisico,
@@ -210,10 +210,10 @@ router.post("/cadastroFpp",
   router.post(
     "/loginfisico",
     body("emailFisico")
-      .isEmail().withMessage("Digite um e-mail válido!"),
+      .isEmail().withMessage("O e-mail está incorreto."),
     body("senhaFisico")
       .isStrongPassword()
-      .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+      .withMessage("A senha está incorreta."),
   
     gravarUsuFisicoAutenticado(usuarioDAL, bcrypt),
     
@@ -221,13 +221,17 @@ router.post("/cadastroFpp",
       const erros = validationResult(req);
       if (!erros.isEmpty()) {
         
-        return res.render("pages/loginF", { listaErros: erros, dadosNotificacao: null, autenticado: null })
+        return res.render("pages/loginF", { listaErros: erros, dadosNotificacao: null, autenticado: null, valores: req.body })
       }
       if (req.session.autenticado != null) {
         
         res.redirect("/homeLF");
       } else {
-        res.render("pages/loginF", { listaErros: null, autenticado: req.session.autenticado, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "E-mail e/ou senha inválidos!", tipo: "error" } })
+        res.render("pages/loginF", {
+          listaErros: erros, dadosNotificacao: {
+            titulo: "Erro ao fazer login!", mensagem: "Verifique os valores digitados!", tipo: "error"
+          }, valores: req.body
+        })
       }
 });
   
@@ -240,16 +244,16 @@ router.get("/cadastroJ", function (req, res) {
 
 router.post("/cadastrojuri",
   body("nomeJuridico")
-    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
+    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20."),
   body("cnpj")
-    .isLength({ min: 10, max: 15 }).withMessage("O CNPJ deve ter 14 dígitos!"),
+    .isLength({ min: 10, max: 15 }).withMessage("O CNPJ deve ter 14 dígitos."),
   body("emailJuridico")
-    .isEmail().withMessage("Digite um e-mail válido!"),
+    .isEmail().withMessage("Digite um e-mail válido, como ecovox@gmail.com"),
   body("senhaJuridico")
     .isStrongPassword()
     .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
   body("telJuridico")
-    .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
+    .isLength({ min: 10, max: 15 }).withMessage("O telefone possui 12 digitos, como (11) 98765-4321."),
   async function (req, res) {
     let dadosForm = {
       nomeJuridico: req.body.nomeJuridico,
@@ -269,7 +273,7 @@ router.post("/cadastrojuri",
       let insert = await usuarioDAL.createJ(dadosForm);
       res.render("pages/loginJ", {
         listaErros: null, dadosNotificacao: {
-          titulo: "Cadastro realizado!", mensagem: "Usuário criado com o id" + insert.insertId + "!", tipo: "success"
+          titulo: "Cadastro realizado!", mensagem: "Usuário criado com sucesso!", tipo: "success"
         }, valores: req.body
       })
     } catch (e) {
@@ -288,10 +292,10 @@ router.post("/cadastrojuri",
 router.post(
   "/loginjuri",
   body("emailJuridico")
-    .isEmail().withMessage("Digite um e-mail válido!"),
+    .isEmail().withMessage("O e-mail está incorreto."),
   body("senhaJuridico")
     .isStrongPassword()
-    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+    .withMessage("A senha está incorreta."),
 
   gravarUsuJuridicoAutenticado(usuarioDAL, bcrypt),
   

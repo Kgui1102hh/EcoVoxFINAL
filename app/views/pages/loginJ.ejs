@@ -8,6 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/css/loginj.css" media="screen" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/css\loginj.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="/js/cadastroj.js"></script>
 </head>
 <body>
 <section>
@@ -50,40 +54,27 @@
     <form action="/loginjuri" method="post" id="form">
       <% 
       
-      let avisoErro = {"nome_usu":"", "senha_usu":""}
-      let msgErro = {"nome_usu":"", "senha_usu":""}
+      let avisoErro = {"emailJuridico":"", "senhaJuridico":""}
+      let msgErro = {"emailJuridico":"", "senhaJuridico":""}
       let listaErros = ""
           if(listaErros){
               listaErros.errors.forEach(function(itemErro){
-                  if(itemErro.path == "nome_usu"){
-                      avisoErro.nome_usu = "erro";
-                      msgErro.nome_usu = itemErro.msg
+                  if(itemErro.path == "emailJuridico"){
+                      avisoErro.emailJuridico = "erro";
+                      msgErro.emailJuridico = itemErro.msg
                   }
-                  if(itemErro.path == "senha_usu"){
-                      avisoErro.senha_usu = "erro";
-                      msgErro.senha_usu = itemErro.msg
+                  if(itemErro.path == "senhaJuridico"){
+                      avisoErro.senhaJuridico = "erro";
+                      msgErro.senhaJuridico = itemErro.msg
                   }
               })
           }
       %>
       <div class="input-box">
             <b id="cnpj_cpf"></b>
-            <input type="text" name="tel" id="cpf"  maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" class="cpf">
-            <span class="span-input">CNPJ</span><br>
+            <input type="text" name="emailJuridico" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" class="cpf">
+            <span class="span-input">E-mail</span><br>
         </body>
-
-        <script>  
-          function formatar(mascara, documento) {
-            let i = documento.value.length;
-            let saida = '#';
-            let texto = mascara.substring(i);
-            while (texto.substring(0, 1) != saida && texto.length ) {
-              documento.value += texto.substring(0, 1);
-              i++;
-              texto = mascara.substring(i);
-            }
-          }
-        </script>
      
        
      
@@ -91,7 +82,7 @@
 
 
         <div class="input-box">
-            <input type="password" id="senha"   name="senha" required="required"/>
+            <input type="password" id="senhaJuridico" name="senhaJuridico" required="required"/>
             <span class="span-input">Senha</span><br>
             <span class="lnr lnr-eye"></span>
 

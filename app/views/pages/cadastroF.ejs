@@ -53,7 +53,6 @@
         <% 
     let msgErro = {"nomeFisico":"", "senhaFisico":"","emailFisico":"", "telFisico":""};
     let avisoErro = {"nomeFisico":"", "senhaFisico":"","emailFisico":"", "telFisico":""};
-    
     if(listaErros){
         listaErros.errors.forEach(function(itemErro){
             if(itemErro.path == "nomeFisico"){
@@ -104,6 +103,7 @@
         </script>
     <% } %>
 
+
     <div class="input-box">
             <input type="text" id="nomeFisico" name="nomeFisico"  class="nome" value="<%= valores.nomeFisico %>" class="<%= avisoErro.nomeFisico %>"/>
             <span class="span-input">Nome</span>
@@ -115,13 +115,13 @@
             <span class="span-input">Email</span>
             <span> <%= msgErro.emailFisico %> </span><br>
         </div>
-          
-       
+ 
+
             <div class="input-box">
             <input type="text" class="form-control" id="telFisico" name="telFisico" maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" value="<%= valores.telFisico %>" class="<%= avisoErro.telFisico %>">
             <span class="span-input">Telefone</span>
             <span > <%= msgErro.telFisico %> </span><br>
-        </div>
+            </div>
         <script>
             const telFisico = document.getElementById('telFisico') // Seletor do campo de telefone
             telFisico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
@@ -133,6 +133,7 @@
              telFisico.value = valor // Insere o(s) valor(es) no campo
             }
         </script>
+
 
       <div class="input-box">
             <input type="password" id="senhaFisico"  name="senhaFisico" class="senha" value="<%= valores.senhaFisico %>" class="<%= avisoErro.senhaFisico %>"/>
@@ -146,7 +147,8 @@
         <span class="span-check"></span>
     </label>
         
-        </div>
+
+
        
 
 
