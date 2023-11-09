@@ -8,7 +8,7 @@
 
 body{
     box-sizing: border-box;
-    height:1640px;
+    height:1497px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-left: auto;
     margin-right: auto;
@@ -50,6 +50,7 @@ body{
  list-style: none;
  margin-right: 50px;
  width: 20000px;
+ cursor: pointer;
  display: inline ;
 }
 .nav-home li:hover{
@@ -97,6 +98,7 @@ body{
 }
 .search-box:hover{
   background-color: #009696;
+  margin-left: -115px;
 }
 .search-box:hover > .search-text{
   width: 250px;
@@ -508,6 +510,13 @@ margin-top: 160px;
     
     }
 
+    .sidebar .list-sair{
+      bottom: 0;
+  
+      margin: 60px -10px;
+
+  }
+
     
     
     
@@ -805,7 +814,7 @@ display: flex
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     position: absolute;
-    bottom: 290px;
+    bottom: 305px;
     left: 3%;
   
   }
@@ -873,6 +882,10 @@ display: flex
     
 
   }
+  #tab{
+    margin-top: -10px;
+
+  }
   .tab{
     background-color: #F2F2F2;
     border: 1px solid #F2F2F2;
@@ -925,7 +938,7 @@ display: flex
   }
   .empresas{
     color: #F2F2F2;
-    margin-top: 32px;
+    margin-top: 22px;
   display: flex;
   margin-left: 290px;
   font-family: "helvetica";
@@ -1200,7 +1213,7 @@ display: flex
     width: 550px;
     height: 748px;
     margin-top: -609px;
-    margin-left: 969px;
+    margin-left: 986px;
     
     }
     #registrado{
@@ -1230,7 +1243,7 @@ display: flex
         body{
         box-sizing: border-box;
         width: 480px;
-        height: 6558px;
+        height: 1320px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
         margin-left: auto;
@@ -1289,10 +1302,12 @@ display: flex
         .nav-home{
             overflow: hidden;
             opacity: 0;
+            display: none;
         }
         .search-box{
           overflow: hidden;
           opacity: 0;
+          display: none;
         }
         
         .cadastar1{
@@ -1560,7 +1575,7 @@ display: flex
             
             top: 0;
             
-             right: 20px;
+             right: 40px;
             
              width: 1px;
             
@@ -2057,10 +2072,10 @@ display: flex
     height: 80px;
     font-size: 20px;
     font-weight: 600;
-    margin-left: 38%;
-    margin-top: 100px;
+    margin-left: 36%;
+    margin-top: 150px;
     z-index: 1;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
   
   }
   
@@ -2177,6 +2192,9 @@ display: flex
     
 
   }
+  #tab{
+    margin-top: 10px;
+  }
   .tab{
     background-color: #F2F2F2;
     border: 1px solid #F2F2F2;
@@ -2184,7 +2202,7 @@ display: flex
     border-radius: 5px 5px 0 0;
     overflow: auto;
     padding-left: 30px;
-    margin-top: -10px;
+    margin-top: 60px;
 
   }
   .tab button{
@@ -2220,18 +2238,18 @@ display: flex
 
   
   .name{
-  margin-top: -100px;
+  margin-top: -150px;
   display: flex;
-  margin-left: 120px;
+  margin-left: 210px;
   font-family: "helvetica";
   font-size: 32px;
   color: #F2F2F2;
   }
   .empresas{
     color: #F2F2F2;
-    margin-top: 32px;
+    margin-top: 12px;
   display: flex;
-  margin-left: 35px;
+  margin-left: 180px;
   font-family: "helvetica";
   font-size: 20px;
 
@@ -2277,13 +2295,15 @@ display: flex
   }
   .conteudo-info{
     grid-template-columns: repeat(auto-fit, minmax(480px, auto));
-    grid-template-columns: 45% 45%;
+    grid-template-columns: 45%;
+    width: 1000px;
+
     gap: 1.5rem;
     display: grid;
 
   }
   .informaçao{
-    margin-top: 50px;
+    margin-top: 10px;
     padding-left: 20px;
   }
   .informaçao .informaçao-icone{
@@ -2348,7 +2368,7 @@ display: flex
     padding-left: 50px;
     margin-top: 10px;
     border-radius: 10px; 
-    background: linear-gradient(180deg, #D9D9D9 60%, rgba(255, 255, 255, 0) 100%);
+
   }
   .produto-usuario img{
     width: 237px;
@@ -2420,10 +2440,68 @@ text-align: left;
       margin-right: 500px;
    
     }
+    .criar-produtos{
+      background-color: #222222;
+      width: 430px;
+      text-align: left;
+      height: 201px;
+      border-radius: 15px;
+      margin-top: -20px;
+      margin-left: -90px;
+    }
+    .criar-produtos h1{
+    color: #F2F2F2;
+      font-size: 44px;
+     margin-left: 20px;
+     padding-top: 40px;
+      font-weight: 700;
+      
+    }
+    
+   
+    .criar-produtos strong{
+      font-size: 50px;
+  
+    }
+    .criar-produtos img{
+      height: 266px;
+      width: 340px;
+      margin-top: -244px;
+      margin-left: 150px;
+    }
+    .criar-artigos{
+      background-color: #222222;
+      width: 430px;
+      text-align: left;
+      height: 200px;
+      border-radius: 15px;
+      margin-left:  10px;
+      margin-top: 70px;
+    }
+    .criar-artigos h1{
+      color: #F2F2F2;
+      transition: .35s;
+      font-size: 44px;
+     margin-left: 20px;
+     padding-top: 40px;
+      font-weight: 700;
+      
+    }
+    .criar-artigos img{
+      height: 276px;
+      width: 240px;
+      margin-left: 190px;
+      margin-top: -254px;
+
+    }
+    .criar-artigos strong{
+      font-size: 50px;
+    }
+    
     footer{
             
       width: 480px;
-      height: 1118px;
+      height: 588px;
       background: #222222;
       margin-top: 130px;
       margin-right: 700px;

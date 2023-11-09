@@ -8,7 +8,7 @@
 
 body{
     box-sizing: border-box;
-    height: 5372px;
+    height: 1488px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-left: auto;
     margin-right: auto;
@@ -49,6 +49,7 @@ body{
    list-style: none;
    margin-right: 50px;
    width: 20000px;
+   cursor: pointer;
    display: inline ;
 }
 .nav-home li:hover{
@@ -515,6 +516,12 @@ margin-top: 160px;
      width: 93.5%;
     
     }
+    .sidebar .list-sair{
+        bottom: 0;
+    
+        margin: 60px -10px;
+
+    }
     
     
     
@@ -873,7 +880,7 @@ display: flex
             width: 550px;
             height: 748px;
             margin-top: -680px;
-            margin-left: 969px;
+            margin-left: 986px;
             
             }
             #registrado{
@@ -910,7 +917,7 @@ display: flex
                 body{
                 box-sizing: border-box;
                 width: 480px;
-                height: 6558px;
+                height: 1892px;
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 5px;
                 margin-left: auto;
@@ -969,10 +976,12 @@ display: flex
                 .nav-home{
                     overflow: hidden;
                     opacity: 0;
+                    display: none;
                 }
                 .search-box{
                   overflow: hidden;
                   opacity: 0;
+                  display: none;
                 }
                 
                 .cadastar1{

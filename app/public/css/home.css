@@ -49,6 +49,7 @@ body{
    margin-right: 50px;
    width: 20000px;
    display: inline ;
+   cursor: pointer;
 }
 .nav-home li:hover{
 
@@ -1699,7 +1700,7 @@ color: #616162;
         width: 550px;
         height: 748px;
         margin-top: -680px;
-        margin-left: 969px;
+        margin-left: 986px;
         
         }
         #registrado{
@@ -1799,10 +1800,12 @@ margin-left: 20px;
 .nav-home{
     overflow: hidden;
     opacity: 0;
+    display: none;
 }
 .search-box{
   overflow: hidden;
   opacity: 0;
+  display: none;
 }
 
 .cadastar1{

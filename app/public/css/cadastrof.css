@@ -41,6 +41,11 @@ body section{
     margin-top: 10px;
     
 }
+.span-input-erro{
+    color: red;
+    padding-left: 30px;
+
+}
 
 
 .borda{
@@ -168,6 +173,7 @@ text-align: left;
       
       
       }
+     
       #cnk{
         display: none;
       }
@@ -190,7 +196,7 @@ text-align: left;
         background-color: #FFFFFF;
         border-radius: 50%;
         width: 25px;
-        margin-left: 5px;
+        margin-left: 2px;
         height: 25px;
         transition: all .5s ease-in-out;
 
@@ -199,12 +205,12 @@ text-align: left;
         background-color: #222222;
       }
       #cnk:checked ~  .label-check  .span-check{
-        transform: translateX(26PX);
+        transform: translateX(30PX);
       }
     .butao{
         width: 432px;
         height: 60px;
-        margin-top: 70px;
+        margin-top: 20px;
         margin-left: 23px;
         border-radius: 10px;
         color: #f2f2f2;
@@ -223,7 +229,7 @@ text-align: left;
         
       .Politica{
         font-size: 20px;
-        margin-top: 20px;
+        margin-top: 10px;
         font-weight: 400;
         color: #616162;
         text-align: center;

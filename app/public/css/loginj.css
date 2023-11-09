@@ -167,6 +167,7 @@ section input{
     font-size: 24px;
     font-weight: 400;
     border-radius: 10px;
+    color: #F2F2F2;
     padding-left: 15px;
     line-height: 29px;
     letter-spacing: 0em;
@@ -203,6 +204,7 @@ section input{
   
   .input-box input:focus{
     border: solid 2px #009696;
+    color: #222222;
   
   
   }

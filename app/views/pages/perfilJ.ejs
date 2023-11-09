@@ -40,7 +40,7 @@
                     <li><a onclick="window.location='/homeLJ'">Home</a> </li>
                     <li><a onclick="window.location='/artigosLJ'">Blog</a> </li>
                     <li onclick="window.location='/lojaLJ'"><a>Loja</a> </li>
-                    <li><a>Sair</a> </li>
+                    <li onclick="window.location='/sair'"><a>Sair</a> </li>
                    
                 
                 </ul>
@@ -135,6 +135,25 @@
                 
                             </li>
                         </ul>
+                        
+                    <ul class="list-logout">
+
+                        <li class="list-sair">
+        
+                            <a onclick="window.location='/sair'">
+            
+                            <i class='bx bx-log-out'></i>
+            
+             
+                            <box-icon name='door-open' type='solid'  class="img_home" color='#ffffff' id="sair" ></box-icon>
+                            <span class="links-name">Sair</span>
+            
+                            </a>
+    
+                            <span class="tooltip">sair</span>
+            
+                        </li>
+                    </ul>
                 
                  </div>
             </div>
@@ -174,12 +193,12 @@
            
         </section>
 
-        <H1  class="name"  value="valores.nomeJuridico">NOME_USUARIO</H1>
+        <H1  class="name"  value="valores.nomeJuridico">NOME</H1>
         <p   class="empresas" value="valores.cnpj">CNPJ_USUARIO</p>
         <h3 class="empresas">Nome_empresa</h3>
 
 
-        <div class="tab">
+        <div class="tab" id="tab">
             <button  class="tab-button" onclick=" abrirtab(event,'sobre')" >Sobre</button>
             <button class="tab-button" onclick=" abrirtab(event,'artigo')">Artigos</button>
             <button class="tab-button" onclick=" abrirtab(event,'contato')">Contatos</button>
@@ -295,5 +314,5 @@
   
   </footer>
 </body>
-
+<script src="/js/home.js"></script>
 </html>
