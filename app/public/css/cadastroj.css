@@ -128,6 +128,7 @@ text-align: left;
     .input-box{
         position: relative;
         margin-top: -20px;
+        color: #F2F2F2;
         padding-top: 10px;
         
       }
@@ -158,7 +159,10 @@ text-align: left;
       
       .input-box input:focus{
         border: solid 2px #009696;
+        color: #F2F2F2;
+
       }
+    
       .Politica{
         font-size: 20px;
         margin-top: -200px;

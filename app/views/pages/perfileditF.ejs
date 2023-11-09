@@ -222,7 +222,7 @@
             <div class="input-box">
                 <input type="password">
                 <span>Senha</span>
-                <p>Caso queira manter sua senha atual, não escreva neste campo.</p>
+            
             </div>
            
             </div>
@@ -239,14 +239,14 @@
 
 
         <script>
-            const telFisico = document.getElementById('telFisico') // Seletor do campo de telefone
-            telFisico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
-            telFisico.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
+            const telFisico = document.getElementById('telFisico')
+            telFisico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value))
+            telFisico.addEventListener('change', (e) => mascaraTelefone(e.target.value)) 
             const mascaraTelefone = (valor) => {
                 valor = valor.replace(/\D/g, "")
                 valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
                 valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
-             telFisico.value = valor // Insere o(s) valor(es) no campo
+             telFisico.value = valor 
             }
         </script>
         
@@ -269,16 +269,6 @@
     <script src="js/home.js"></script>
 
     <footer>
-    
-        // TIRAR ESTA SEÇÃO, E CORRIGIR O CSS
-        <div class="div-faça-parte">
-          <div class="faça-parte">
-              <p>Faça parte da Ecovox e vamos tornar o Brasil mais ecológico juntos!</p>
-              <button  onclick="window.location='/cadastroF'">  ACESSO </button>
-              <img src="/imagen\home-correto.png" >
-          </div>
-      <div>
-        // TIRAR ESTA SEÇÃO, E CORRIGIR O CSS
       
       
           <div class="contato">
