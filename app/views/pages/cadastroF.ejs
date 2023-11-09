@@ -7,6 +7,7 @@
     <title>cadastroF</title>
     <link rel="stylesheet" type="text/css" href="/css\cadastrof.css" media="screen" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../conexao.js"></script>
     <script src="/js/home.js"></script>
@@ -17,21 +18,22 @@
     <script src="/js/cadastrof.js"></script>
 </head>
 <body>
-    
+   
+
+
 
     <section>
         <div class="border">
             <div class="borda"> 
                 
-                    <a  onclick="window.location='/home'">
-                        <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
-                        </a>
+                
+                <box-icon name='chevron-left'  onclick="window.location='/home'" color='#F2F2F2' class="seta" ></box-icon>
+                        
               
                 <div class="logo1">
                     <img src="/imagen\login-logo-blue.png" class="logo2"> 
-                
                    </div>
-                 </div>
+                </div>
     
                  <h1 class="titulo"> Bem-vindo(a)! </h1>
                  <h4 class="titulo-sub">Cadastrar sua conta</h4>
@@ -141,14 +143,18 @@
             <span> <%= msgErro.senhaFisico %> </span><br>
         </div>
 
-        <div class="check-cont">
-        <input type="checkbox" id="cnk" >
-        <label for="cnk" class="label-check">
-        <span class="span-check"></span>
-    </label>
         
 
+    <p class="Politica">Ao cadastrar-se você concorda com a <br>
+        <a>Política de Privacidade </a>e  <a>Termos & Condições</a></p>
 
+
+        
+        <div class="check-cont">
+            <input type="checkbox" id="cnk" required>
+            <label for="cnk" class="label-check">
+            <span class="span-check"></span>
+        </label>
        
 
 

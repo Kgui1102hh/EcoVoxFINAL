@@ -15,15 +15,10 @@ margin-left: auto;
 margin-right: auto;
 background-image: url("/imagen/gif-cadastro.gif");
 background-size: 100% 100%;
-padding-top: 10px;
 
 
 }
-span{
-    color: red;
-    margin-left: 23px;
-   
-}
+
 body section{
     width: 480px;
     margin-left: auto;
@@ -37,29 +32,28 @@ body section{
 .borda{
     width: 100%;
     height: 252px;
+    margin-top: -8px;
     background-color: #00AAAA;
     border-bottom-right-radius:16px ;
     border-bottom-left-radius: 16px;
     background-image: url("/imagen/login-folhas.png");
 
 }
+
 .seta{
-    width: 65px;
-    height: 65px;
-    margin-top: 57px;
-    margin-left: 24px;
-    border: 3px;
+    width: 100px;
+    height: 100px;
+    margin-left: -10px;
+    margin-top: 10px;
     
-
 }
-
 .logo2{
 width: 60px;
 position: relative;
 display: flex;
 height: 60px;
 margin-left: 210px;
-margin-top: 80px;
+margin-top: 0px;
 
 }
 .titulo{
@@ -113,7 +107,7 @@ color: #727272;
     section input{
 width: 432px;
 height: 60px;
-margin-top: 30px;
+margin-top: 40px;
 margin-left: 25px;
 border: 2px solid #888888;
 font-family: helvetica;
@@ -121,6 +115,7 @@ font-size: 24px;
 font-weight: 400;
 padding-left: 15px;
 border-radius: 10px;
+color: #F2F2F2;
 letter-spacing: 0em;
 text-align: left;
 
@@ -128,14 +123,13 @@ text-align: left;
     .input-box{
         position: relative;
         margin-top: -20px;
-        color: #F2F2F2;
         padding-top: 10px;
         
       }
       .input-box .span-input{
         position: absolute;
         margin-left: -430px;
-        margin-top: 40px;
+        margin-top: 50px;
         padding: 10px;
         pointer-events: none;
         font-size: 1em;
@@ -159,13 +153,48 @@ text-align: left;
       
       .input-box input:focus{
         border: solid 2px #009696;
-        color: #F2F2F2;
+        color: #222222
 
       }
+      
+    
+    #cnk{
+      display: none;
+    }
+    .label-check{
+      position: relative;
+      background-color: #009696;
+      width: 60px;
+      height: 30px;
+      border-radius: 40px;
+      margin-left: 25px;
+      margin-top: 0px;
+      display: flex;
+      align-items: center;
+      transition: all .5s ease-in-out;
+      cursor: pointer;
+
+    }
+    .span-check{
+      position: absolute;
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      width: 25px;
+      margin-left: 5px;
+      height: 25px;
+      transition: all .5s ease-in-out;
+
+    }
+    #cnk:checked ~  .label-check{
+      background-color: #222222;
+    }
+    #cnk:checked ~  .label-check  .span-check{
+      transform: translateX(26PX);
+    }
     
       .Politica{
         font-size: 20px;
-        margin-top: -200px;
+        margin-top: 30px;
         color: #616162;
         font-weight: 400;
         text-align: center;
@@ -179,7 +208,7 @@ text-align: left;
     .butao{
         width: 432px;
         height: 60px;
-        margin-top: 150px;
+        margin-top: 50px;
         margin-left: 23px;
         border-radius: 10px;
         border:  none;
@@ -203,7 +232,7 @@ line-height: 30px;
 letter-spacing: 0em;
 text-align: left;
 color:  #727272;
-margin-top: 170px;
+margin-top:40px;
 margin-left: 90px;
 
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastroJ</title>
     <link rel="stylesheet" type="text/css" href="/css\cadastroj.css" media="screen" />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <!-- JS -->
@@ -19,9 +20,10 @@
   
         <div class="borda">
                
-           <a  onclick="window.location='/home'">
-               <box-icon name='chevron-left'  onclick="window.location='/homeLF'" color='#616162' class="seta" ></box-icon>
-               </a>
+           
+            <box-icon name='chevron-left'  onclick="window.location='/home'" color='#F2F2F2' class="seta" ></box-icon>
+               
+
      
        <div class="logo1">
            <img src="/imagen\login-logo-blue.png" class="logo2"> 
@@ -118,13 +120,16 @@
                 }                        
         </script>
     <% } %>
-        <div class="social">
-            <input type="name" placeholder="Nome/Razão Social" value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>" id="nomeJuridico" name="nomeJuridico" required="required">
+    <div class="input-box">
+            <input type="name"  value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>" id="nomeJuridico" name="nomeJuridico" required="required">
+            <span class="span-input">Nome</span>
             <span> <%= msgErro.nomeJuridico %> </span>
         </div>
-        <div>
+
+        <div class="input-box">
             <b id="cnpj"></b>
-            <input type="text" name="cnpj" placeholder="CNPJ (012.345.678-90)" id="cnpj" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" value="<%= valores.cnpj %>" class="<%= avisoErro.cnpj %>">
+            <input type="text" name="cnpj"  id="cnpj" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" value="<%= valores.cnpj %>" class="<%= avisoErro.cnpj %>">
+            <span class="span-input">CNPJ</span>
             <span> <%= msgErro.cnpj %> </span>
             <br>
             <script>  
@@ -140,12 +145,16 @@
                 }
               </script>
         </div>
-        <div class="tudo">
-            <input type="text" id="emailJuridico" placeholder="Email (nome@email.com)" value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>" name="emailJuridico">
+
+            <div class="input-box">
+            <input type="text" id="emailJuridico"  value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>" name="emailJuridico">
+            <span class="span-input">Email</span>
             <span> <%= msgErro.emailJuridico %> </span><br>
         </div>
-        <div class="fone">
-            <input type="text" value="<%= valores.telJuridico %>" class="form-control" class="<%= avisoErro.telJuridico %>" id="telJuridico" name="telJuridico" maxlength="15" placeholder="Telefone ((XX) XXXXX-XXXX)">
+
+           <div class="input-box">
+            <input type="text" value="<%= valores.telJuridico %>" class="form-control" class="<%= avisoErro.telJuridico %>" id="telJuridico" name="telJuridico" maxlength="15" >
+            <span class="span-input">Telefone</span>
             <span> <%= msgErro.telJuridico %> </span><br>
         </div>
         <script>
@@ -159,15 +168,34 @@
              telJuridico.value = valor // Insere o(s) valor(es) no campo
             }
         </script>
-        <div class="Endereco">
-            <input type="text" placeholder="Endereço (Rua nome, 00)" class="end" value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>" id="enderecoJuridico" name="enderecoJuridico"">
+
+        <div class="input-box">
+            <input type="text"  class="end" value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>" id="enderecoJuridico" name="enderecoJuridico"">
+            <span class="span-input">Endereço</span>
             <span> <%= msgErro.enderecoJuridico %> </span><br>
         </div>
-        <div class="bem">
-            <input type="password" id="senhaJuridico" placeholder="Senha (Min. 8, 1 maisculo, especial e número.)" class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico"/>
+
+        <div class="input-box">
+            <input type="password" id="senhaJuridico"class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico"/>
+            <span class="span-input">Senha</span>
             <span> <%= msgErro.senhaJuridico %> </span>
             <br>
         </div>
+
+
+        <p class="Politica">Ao cadastrar-se você concorda com a <br>
+            <a>Política de Privacidade </a>e  <a>Termos & Condições</a></p>
+    
+    
+            
+            <div class="check-cont">
+                <input type="checkbox" id="cnk" required>
+                <label for="cnk" class="label-check">
+                <span class="span-check"></span>
+            </label>
+
+
+
         <div class="button">
 
             <button type="submit" class="butao" >Entrar</button>
