@@ -36,7 +36,8 @@ function gravarUsuFisicoAutenticado(usuarioDAL, bcrypt) {
                         id: results[0].idFisico,
                         telFisico: results[0].telFisico,
                         emailFisico: results[0].emailFisico,
-                        imgPerfilPastaFisi:"../public/imagem/Artigo-Caua.png",
+                        lojaFisico: results[0].lojaFisico,
+                        imgPerfilPastaFisi:results[0].imgPerfilPastaFisi,
                         imgPerfilBancoFisi:results[0].imgPerfilBancoFisi
                     };
                 }
@@ -68,7 +69,11 @@ function gravarUsuJuridicoAutenticado(usuarioDAL, bcrypt) {
                     var autenticado = {
                         autenticado: results[0].nomeJuridico,
                         id: results[0].idJuridico,
-                        imgPerfilPastaJuri:"../public/imagem/img-perfil.png",
+                        cnpj: results[0].cnpj,
+                        telJuridico: results[0].telJuridico,
+                        emailJuridico: results[0].emailJuridico,
+                        enderecoJuridico: results[0].enderecoJuridico,
+                        imgPerfilPastaJuri:results[0].imgPerfilPastaJuri,
                         imgPerfilBancoJuri:results[0].imgPerfilBancoJuri
                     };
                 }

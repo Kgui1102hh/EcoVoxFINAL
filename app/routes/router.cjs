@@ -56,7 +56,7 @@ router.get("/perfilJ", verificarUsuAutenticado, async function (req, res) {
   if (req.session.autenticado.autenticado == null) {
     res.render("pages/loginJ")
   } else {
-    res.render("pages/perfilJ",{autenticado: req.session.autenticado, retorno: null, erros: null})
+    res.render("pages/perfilJ",{autenticado: req.session.autenticado, retorno: null, erros: null, valores: {"senhaJuridico":"","emailJuridico":"","nomeJuridico":"","telJuridico":"","cnpj":"","enderecoJuridico":"","imgPerfilPastaJuri":""}})
   }
 })
 
@@ -115,7 +115,7 @@ router.get('/homeLF', verificarUsuAutenticado, function (req, res) {
 });
 
 router.get('/homeLJ', function (req, res) {
-  res.render('pages/homeLJ', { listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeJuridico":""}});
+  res.render('pages/homeLJ', { autenticado: req.session.autenticado, listaErros: null, dadosNotificacao: null, erros: null, valores: {"nomeJuridico":""}});
 });
 
 router.get('/Termos', function (req, res) {
@@ -151,7 +151,7 @@ router.get('/perfileditF', function (req, res) {
   res.render('pages/perfileditF', { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });
 });
 router.get('/perfilJ', function (req, res) {
-  res.render('pages/perfilJ', { listaErros: null, dadosNotificacao: null, valores: { nomeJuridico: "", cnpj: "", emailJuridico: "", senhaJuridico: "", telJuridico: "", enderecoJuridico: "", imgPerfilPastaJuri: "" } });
+  res.render('pages/perfilJ', { listaErros: null, dadosNotificacao: null, autenticado: req.session.autenticado });
 });
 router.get('/perfileditJ', function (req, res) {
   res.render('pages/perfileditJ', { listaErros: null, dadosNotificacao: null, valores: { nomeJuridico: "", cnpj: "", emailJuridico: "", senhaJuridico: "", telJuridico: "", enderecoJuridico: "", imgPerfilPastaJuri: "" } });
@@ -359,7 +359,8 @@ router.post("/perfileditFisico", upload.single('imagem-perfilF'),
         senhaFisico: bcrypt.hashSync(req.body.senhaFisico, salt),
         telFisico: req.body.telFisico,
         lojaFisico: req.body.lojaFisico,
-        imgPerfilPastaFisi: req.body.imgPerfilPastaFisi
+        imgPerfilBancoFisi: null,
+        statusFisico: 1
       };
       console.log(dadosForm)
       console.log("senha: " + req.body.senhaFisico)
@@ -426,7 +427,7 @@ router.get("/perfilJ", verificarUsuAutenticado, async function (req, res) {
   } catch (e) {
     res.render("pages/perfilJ", {
       listaErros: null, dadosNotificacao: null, valores: {
-        imgPerfilBancoJurii: "", imgPerfilPastaJuri: "", nomeJuridico: "", emailJuridico: "",
+        imgPerfilBancoJuri: "", imgPerfilPastaJuri: "", nomeJuridico: "", emailJuridico: "",
         telJuridico: "", senhaJuridico: "", cnpj: "", enderecoJuridico: ""
       }
     })
@@ -434,33 +435,35 @@ router.get("/perfilJ", verificarUsuAutenticado, async function (req, res) {
   res.render("pages/perfilJ",{ autenticado: req.session.autenticado, retorno: null, erros: null, valores: {"senhaJuridico":"","emailJuridico":"","nomeJuridico":"","telJuridico":"","enderecoJuridico":"","cnpj":""}})
 });
 
-router.post("/perfileditJuridico", upload.single('input-imagem1'),
+router.post("/perfileditJuridico", upload.single('imagem-perfilJ'),
   body("nomeJuridico")
-    .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
+   .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
   body("emailJuridico")
-    .isEmail().withMessage("Digite um e-mail válido!"),
+   .isEmail().withMessage("Digite um e-mail válido!"),
   body("senhaJuridico")
-    .isStrongPassword()
-    .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
+  .isStrongPassword()
+   .withMessage("A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula, 1 caractere especial e 1 número"),
   body("telJuridico")
-    .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
+   .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
   async function (req, res) {
     const erros = validationResult(req);
+    console.log(erros)
     if (!erros.isEmpty()) {
-      console.log(erros)
-      return res.render("pages/perfilJ", { listaErros: erros, dadosNotificacao: null, valores: req.body })
+      console.log(erros);
+      return res.render("pages/perfileditJ", { listaErros: erros, dadosNotificacao: null, valores: req.body })
     }
     try {
       var dadosForm = {
-        nomeJuridico: req.body.nomeJuridico,
         emailJuridico: req.body.emailJuridico,
+        nomeJuridico: req.body.nomeJuridico,
         senhaJuridico: bcrypt.hashSync(req.body.senhaJuridico, salt),
         telJuridico: req.body.telJuridico,
         enderecoJuridico: req.body.enderecoJuridico,
-        imgPerfilPastaJuri: req.body.imgPerfilPastaJuri,
+        imgPerfilBancoJuri: null,
+        statusJuridico: 1
       };
       console.log(dadosForm)
-      console.log("Senha: " + req.body.senhaJuridico)
+      console.log("senha: " + req.body.senhaJuridico)
       if (req.body.senhaJuridico != "") {
         dadosForm.senhaJuridico = bcrypt.hashSync(req.body.senhaJuridico, salt);
       }
@@ -472,17 +475,20 @@ router.post("/perfileditJuridico", upload.single('input-imagem1'),
       }
       console.log(dadosForm);
 
+      console.log("id -->"+ req.session.autenticado.id);
+
       let resultUpdate = await usuarioDAL.updateJ(dadosForm, req.session.autenticado.id);
+      
       if (!resultUpdate.isEmpty) {
         console.log(resultUpdate);
         if (resultUpdate.affectedRows == 1) {
           var result = await usuarioDAL.findIDJuri(req.session.autenticado.id);
-          console.log(result)
+          console.log(result);
           var autenticado = {
             autenticado: result[0].nomeJuridico,
             id: result[0].idJuridico,
-            emailJuridico: result[0].emailJuridico,
             telJuridico: result[0].telJuridico,
+            emailJuridico: result[0].emailJuridico,
             enderecoJuridico: result[0].enderecoJuridico,
             senhaJuridico: result[0].senhaJuridico,
             cnpj: result[0].cnpj,
@@ -494,18 +500,17 @@ router.post("/perfileditJuridico", upload.single('input-imagem1'),
           var campos = {
             nomeJuridico: result[0].nomeJuridico, emailJuridico: result[0].emailJuridico,
             imgPerfilPastaJuri: result[0].imgPerfilPastaJuri, imgPerfilBancoJuri: result[0].imgPerfilBancoJuri,
-            cnpj: result[0].cnpj, telJuridico: result[0].telJuridico, enderecoJuridico: result[0].enderecoJuridico, senhaJuridico: ""
+            telJuridico: result[0].telJuridico, enderecoJuridico: result[0].enderecoJuridico, senhaJuridico: ""
           }
           res.render("pages/perfilJ", { autenticado: autenticado, listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
         }
       }
     } catch (e) {
       console.log(e)
-      res.render("pages/perfilJuridico", { autenticado: autenticado, listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
+      res.render("pages/perfilJ", { autenticado: autenticado, listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
     }
 
   });
-
 
 // CRIAÇÃO DE ARTIGOS
 

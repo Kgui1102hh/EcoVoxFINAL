@@ -72,20 +72,22 @@
           }
       %>
       <div class="input-box">
-            <b id="cnpj_cpf"></b>
-            <input type="text" name="emailJuridico" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##',this)" required="required" class="cpf">
-            <span class="span-input">E-mail</span><br>
-        </body>
-     
-       
-     
-        </div>
+        <input type="text" name="emailJuridico" id="emailJuridico" class="email" class="<%= avisoErro.emailJuridico %>" required="required">
+        <span class="span-input">Email</span><br>
+        <span>
+            <%= msgErro.emailJuridico %>
+        </span><br>
+    </div>
 
+   
 
         <div class="input-box">
-            <input type="password" id="senhaJuridico" name="senhaJuridico" required="required"/>
+            <input type="password" id="senhaJuridico" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico" required="required"/>
             <span class="span-input">Senha</span>
-            <div id="MMM" onclick="showHide()"></div>   
+            <div id="MMM" onclick="showHide()"></div>  
+            <span>
+                <%= msgErro.senhaJuridico %>
+            </span> 
         </div>
         <script>
             const senhaJuridico = document.getElementById('senhaJuridico');
@@ -107,7 +109,7 @@
 
         
     <div class="button">
-      <button type="button" class="butao" onclick="validarForm()">Entrar</button>
+        <button type="submit"  class="butao">Entrar</button>
     </div>
 
   
