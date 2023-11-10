@@ -64,7 +64,7 @@
       
   
   
-          <box-icon onclick="window.location='perfilF'" name='user-circle' color='#ececec' class="perfil" onclick="window.location='/perfilF'"  ></box-icon>
+          <box-icon  name='user-circle' color='#ececec' class="perfil" onclick="window.location='/perfilJ'"  ></box-icon>
   
   
       
@@ -193,8 +193,6 @@
   </section>
 <main>
 
-
-
     <div  class="retorno">
         <box-icon name='chevron-left' color='#616162' class="Box-seta"  onclick="window.location='/perfilJ'"></box-icon>
         <p onclick="window.location='/perfilJ'">Voltar</p>
@@ -202,132 +200,153 @@
 
 
     
-    let arquivo = {"imagen":"imagen/foto-perfil.png"}
-     
-    if(valores.imgPerfilPastaJuri != null){
-        arquivo.imagen = valores.imgPerfilPastaJuri
-    }else if(valores.imgPerfilBancoJuri != null){ 
-        console.log(valores.imgPerfilBancoJuri)
-        const imgBuffer = Buffer.from(valores.imgPerfilBancoJuri);
-        const imgBase64 = imgBuffer.toString('base64');
-        const dataURL = `data:image/jpeg;base64,${imgBase64}`;
-        arquivo.imagem= dataURL;
-    }
-
-    let msgErro = {"nomeJuridico":"", "emailJuridico":"", telJuridico:"", senhaJuridico:"", enderecoJuridico:""}
-    let avisoErro = {"nomeJuridico":"", "emailJuridico":"", telJuridico:"", senhaJuridico:"", enderecoJuridico:""}
-    listaErros = ""
-    if(listaErros){
-        listaErros.errors.forEach(function(itemErro){
-            if(itemErro.path == "nomeJuridico"){
-                avisoErro.nomeJuridico = "erro";
-                msgErro.nomeJuridico += " "+itemErro.msg
-                %>
-                <script>
-                    notify("Erro no preenchimento","Verifique o campo de nome.<br><%= itemErro.msg%>", "error", "center")                        
-                </script>
-                <%
-            }
-            if(itemErro.path == "telJuridico"){
-                avisoErro.telJuridico = "erro";
-                msgErro.telJuridico = itemErro.msg
-                %>
-                <script>
-                    notify("Erro no preenchimento","Verifique o campo do telefone", "error", "center")                        
-                </script>
-                <%
-            }
-            if(itemErro.path == "senhaJuridico"){
-                avisoErro.senhaJuridico = "erro";
-                msgErro.senhaJuridico = itemErro.msg
-                %>
-                <script>
-                    notify("Erro no preenchimento","Verifique o campo de senha.", "error", "center")                        
-                </script>
-                <%
-            }
-            if(itemErro.path == "enderecoJuridico"){
-                avisoErro.enderecoJuridico = "erro";
-                msgErro.enderecoJuridico = itemErro.msg
-                %>
-                <script>
-                    notify("Erro no preenchimento","Verifique o campo de endereço.", "error", "center")                        
-                </script>
-                <%
-            }
-            if(itemErro.path == "emailJuridico"){
-                avisoErro.emailJuridico = "erro";
-                msgErro.emailJuridico = itemErro.msg
-                %>
-                <script>
-                    notify("Erro no preenchimento","Verifique o campo de e-mail.", "error", "center")                        
-                </script>
-                <%
-            }
-        })
-    }
-    
-    %>
     <h1 class="titulo-editar">Editar Perfil</h1>
 
-
     <section class="seccion-perfil-usuario">
-        <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada">
-                <div class="perfil-usuario-avatar">
-                    <img id="imagem-de-fundo1" src="<%= arquivo.imagen %>" alt="img-avatar1">
-                    <label for="input-imagem1" class="upload-icon1">
-                        <i class='bx bxs-pencil'></i>
-                    </label>
-                    <input type="file" id="input-imagem1" accept="image/*" onchange="alterarImagemDeFundo1()">
-                </div>
-            </div>
-        </div >
+
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
             </div>
           <div class="edit">
-            <form action="/perfiledit" method="post">
+            <%
 
-            <div class="alteraçao-inpults">
+        let arquivo = {"imagen":"imagen/foto-perfil.png"}
+     
+        if(valores.imgPerfilPastaJuri != null){
+            arquivo.imagen = valores.imgPerfilPastaJuri
+        }else if(valores.imgPerfilBancoJuri != null){ 
+            console.log(valores.imgPerfilBancoJuri)
+            const imgBuffer = Buffer.from(valores.imgPerfilBancoJuri);
+            const imgBase64 = imgBuffer.toString('base64');
+            const dataURL = `data:image/jpeg;base64,${imgBase64}`;
+            arquivo.imagem= dataURL;
+        }
 
-            <h1>Informações Básicas</h1>
+        let msgErro = {"nomeJuridico":"", "emailJuridico":"", telJuridico:"", senhaJuridico:"", enderecoJuridico:""}
+        let avisoErro = {"nomeJuridico":"", "emailJuridico":"", telJuridico:"", senhaJuridico:"", enderecoJuridico:""}
+        listaErros = ""
+        if(listaErros){
+            listaErros.errors.forEach(function(itemErro){
+                if(itemErro.path == "nomeJuridico"){
+                    avisoErro.nomeJuridico = "erro";
+                    msgErro.nomeJuridico += " "+itemErro.msg
+                    %>
+                    <script>
+                        notify("Erro no preenchimento","Verifique o campo de nome.<br><%= itemErro.msg%>", "error", "center")                        
+                    </script>
+                    <%
+                }
+                if(itemErro.path == "telJuridico"){
+                    avisoErro.telJuridico = "erro";
+                    msgErro.telJuridico = itemErro.msg
+                    %>
+                    <script>
+                        notify("Erro no preenchimento","Verifique o campo do telefone", "error", "center")                        
+                    </script>
+                    <%
+                }
+                if(itemErro.path == "senhaJuridico"){
+                    avisoErro.senhaJuridico = "erro";
+                    msgErro.senhaJuridico = itemErro.msg
+                    %>
+                    <script>
+                        notify("Erro no preenchimento","Verifique o campo de senha.", "error", "center")                        
+                    </script>
+                    <%
+                }
+                if(itemErro.path == "enderecoJuridico"){
+                    avisoErro.enderecoJuridico = "erro";
+                    msgErro.enderecoJuridico = itemErro.msg
+                    %>
+                    <script>
+                        notify("Erro no preenchimento","Verifique o campo de endereço.", "error", "center")                        
+                    </script>
+                    <%
+                }
+                if(itemErro.path == "emailJuridico"){
+                    avisoErro.emailJuridico = "erro";
+                    msgErro.emailJuridico = itemErro.msg
+                    %>
+                    <script>
+                        notify("Erro no preenchimento","Verifique o campo de e-mail.", "error", "center")                        
+                    </script>
+                    <%
+                }
+            })
+        }
+        
+        %>
+        
+            <form action="/perfileditJuridico" method="post">
+                <div class="perfil-usuario-header">
+                    <div class="perfil-usuario-portada">
+                        <div class="perfil-usuario-avatar">
+                            <img id="imagem-perfilJ" src="<%= arquivo.imagen %>" name="imagem-perfilJ">
+                            <label for="input-imagem1" class="upload-icon1">
+                                <i class='bx bxs-pencil'></i>
+                            </label>
+                            <input type="file" id="input-imagem1" name="imagem-perfilJ" accept="image/*" onchange="alterarImagemDeFundo1()">
+                        </div>
+                    </div>
+                </div >
 
-            <div class="input-box">
-                <input type="text" name="nomeJuridico" id="nomeJuridico"  value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>">
-                <span>Nome</span>
-                <span> <%= msgErro.nomeJuridico %> </span>
-            </div>
-            <div class="input-box">
-                <input type="email" name="emailJuridico" id="emailJuridico"  value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>">
-                <span>E-mail</span>
-                <span> <%= msgErro.emailJuridico %> </span>
-            </div>
-            <div class="input-box">
-                <input type="text" name="enderecoJuridico" id="enderecoJuridico"  value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>">
-                <span>Endereço</span>
-                <span> <%= msgErro.enderecoJuridico %> </span>
-            </div>
-            <div class="input-box">
-                <input type="tel" name="telJuridico" id="telJuridico"  maxlength="15" value="<%= valores.telJuridico %>" class="<%= avisoErro.telJuridico %>">
-                <span>Tel</span>
-                <span> <%= msgErro.telJuridico %> </span>
-            </div>
-            <div class="input-box">
-                <input type="password" name="senhaJuridico" id="senhaJuridico">
-                <span>Senha</span>
-                <span> <%= msgErro.senhaJuridico %> </span>
-            </div>
-           
-            </div>
+      
+                  <div class="alteraçao-inpults">
+      
+                  <h1>Informações Básicas</h1>
+      
+                  <div class="input-box">
+                      <input type="text" name="nomeJuridico" id="nomeJuridico"  value="<%= valores.nomeJuridico %>" class="<%= avisoErro.nomeJuridico %>">
+                      <span class="span-input">Nome</span>
+                      <span class="span-error"> <%= msgErro.nomeJuridico %> </span>
+                  </div>
+                  <div class="input-box">
+                      <input type="email" name="emailJuridico" id="emailJuridico"  value="<%= valores.emailJuridico %>" class="<%= avisoErro.emailJuridico %>">
+                      <span class="span-input">E-mail</span>
+                      <span class="span-error"> <%= msgErro.emailJuridico %> </span>
+                  </div>
+                  <div class="input-box">
+                      <input type="text" name="enderecoJuridico" id="enderecoJuridico"  value="<%= valores.enderecoJuridico %>" class="<%= avisoErro.enderecoJuridico %>">
+                      <span class="span-input">Endereço</span>
+                      <span class="span-error"> <%= msgErro.enderecoJuridico %> </span>
+                  </div>
+                  <div class="input-box">
+                      <input type="tel" name="telJuridico" id="telJuridico"  maxlength="15" value="<%= valores.telJuridico %>" class="<%= avisoErro.telJuridico %>">
+                      <span class="span-input">Tel</span>
+                      <span class="span-error"> <%= msgErro.telJuridico %> </span>
+                  </div>
+                  <div class="input-box">
+                      <input type="password" name="senhaJuridico" id="senhaJuridico">
+                      <span class="span-input">Senha</span>
+                      <div id="MMM" onclick="showHide()" class="mmm"></div>
+                      <p>Caso queira manter sua senha atual, não escreva neste campo.</p>
+                  </div>
+                 
+                  </div>
 
+                  <script>
+                    const senhaJuridico = document.getElementById('senhaJuridico');
+                    const MMM = document.getElementById('MMM');
+        
+                    function showHide(){
+                        if( senhaJuridico.type === " senhaJuridico"){
+                            senhaJuridico.setAttribute('type', 'senhaJuridico');
+                            MMM.classList.remove('hide');
+                        }else{
+                            senhaJuridico.setAttribute('type', 'text');
+                            MMM.classList.add('hide');
+                        }
+                    }
+                </script>
+      
+      
+                      <a href="/deletar" class="delete-button">Cancelar</a>
+                      <input type="submit" value="Salvar" class="alte">
+                  </form>
+                </div>
+              </div>
+              </div>
 
-                <a href="/deletar" class="delete-button">Cancelar</a>
-                <input type="submit" value="Salvar" class="alte">
-            </form>
-          </div>
-        </div>
-        </div>
 
 
 
