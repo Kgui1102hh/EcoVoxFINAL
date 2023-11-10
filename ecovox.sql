@@ -1,17 +1,20 @@
 ALTER USER 'root'@'localhost' IDENTIFIED with mysql_native_password BY '17022006';
-
+ 
+create database ecovox
 default character set utf8
 default collate utf8_general_ci;
- 
+
+
 create table pessoaf (
 idFisico INT AUTO_INCREMENT PRIMARY KEY,
 nomeFisico VARCHAR(100) NOT NULL,
 emailFisico VARCHAR(100) NOT NULL,
 telFisico VARCHAR(20),
 senhaFisico VARCHAR(100) NOT NULL,
-statusFisico int DEFAULT ,
+statusFisico int DEFAULT '1',
+lojaFisico VARCHAR(20) DEFAULT 'Nada',
 imgPerfilPastaFisi varchar(80) DEFAULT NULL,
-imgPerfilBancoFisi longblob
+imgPerfilBancoFisi longblob DEFAULT NULL
 );
  
 create table pessoaj (
@@ -23,8 +26,9 @@ senhaJuridico VARCHAR(100) NOT NULL,
 telJuridico VARCHAR(20) NOT NULL,
 enderecoJuridico VARCHAR(100) NOT NULL,
 statusJuridico int DEFAULT '1',
+lojaJuridico VARCHAR(20) DEFAULT 'Nada',
 imgPerfilPastaJuri varchar(80) DEFAULT NULL,
-imgPerfilBancoJuri longblob
+imgPerfilBancoJuri longblob DEFAULT NULL
 );
  
 create table artigo (

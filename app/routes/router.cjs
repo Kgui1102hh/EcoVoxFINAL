@@ -48,7 +48,7 @@ router.get("/perfilF", verificarUsuAutenticado, async function (req, res) {
   if (req.session.autenticado.autenticado == null) {
     res.render("pages/loginF", { listaErros: null, dadosNotificacao: null, erros: null, valores: {"senhaFisico":"","emailFisico":""}})
   } else {
-    res.render("pages/perfilF",{autenticado: req.session.autenticado, retorno: null, erros: null})
+    res.render("pages/perfilF",{ autenticado: req.session.autenticado, retorno: null, erros: null, valores: {"senhaFisico":"","emailFisico":"","nomeFisico":"","telFisico":""}})
   }
 })
 
@@ -63,9 +63,6 @@ router.get("/perfilJ", verificarUsuAutenticado, async function (req, res) {
 router.get("/sair", limparSessao, function (req, res) {
   res.redirect("/");
 });
-
-
-
 
 
 
@@ -190,9 +187,9 @@ router.post("/cadastroFpp",
     try {
       let insert = await usuarioDAL.createF(dadosForm);
       console.log(insert);
-      res.render("pages/loginF", {
+      return res.render("pages/loginF", {
         listaErros: null, dadosNotificacao: {
-          titulo: "Cadastro realizado!", mensagem: "Usuário criado com o id" + insert.insertId + "!", tipo: "success"
+          titulo: "Cadastro realizado!", mensagem: "Usuário criado com sucesso", tipo: "success"
         }, valores: req.body
       })
     } catch (e) {
@@ -271,14 +268,14 @@ router.post("/cadastrojuri",
     }
     try {
       let insert = await usuarioDAL.createJ(dadosForm);
-      res.render("pages/loginJ", {
+      return res.render("pages/loginJ", {
         listaErros: null, dadosNotificacao: {
           titulo: "Cadastro realizado!", mensagem: "Usuário criado com sucesso!", tipo: "success"
         }, valores: req.body
       })
     } catch (e) {
       console.log(e);
-      res.render("pages/cadastroJ", {
+      return res.render("pages/cadastroJ", {
         listaErros: erros, dadosNotificacao: {
           titulo: "Erro ao cadastrar!", mensagem: "Verifique os valores digitados!", tipo: "error"
         }, valores: req.body
@@ -317,7 +314,7 @@ router.post(
 
 // PERFIL FÍSICO
 
-router.get("/perfilF", async function (req, res) {
+router.get("/perfilF", verificarUsuAutenticado, async function (req, res) {
   try {
     let results = await usuarioDAL.findIDFisi(req.session.autenticado.id);
     console.log(results);
@@ -326,7 +323,7 @@ router.get("/perfilF", async function (req, res) {
       imgPerfilPastaFisi: results[0].imgPerfilPastaFisi, imgPerfilBancoFisi: results[0].imgPerfilBancoFisi,
       telFisico: results[0].telFisico, senhaFisico: ""
     }
-    res.render("pages/perfilF", { listaErros: null, dadosNotificacao: null, valores: campos })
+    res.render("pages/perfilF", { listaErros: null, dadosNotificacao: null, valores: campos, autenticado: req.session.autenticado })
   } catch (e) {
     res.render("pages/perfilF", {
       listaErros: null, dadosNotificacao: null, valores: {
@@ -335,6 +332,7 @@ router.get("/perfilF", async function (req, res) {
       }
     })
   }
+  res.render("pages/perfilF",{ autenticado: req.session.autenticado, retorno: null, erros: null, valores: {"senhaFisico":"","emailFisico":"","nomeFisico":"","telFisico":""}})
 });
 
 router.post("/perfileditFisico", upload.single('imagem-perfilF'),
@@ -352,7 +350,7 @@ router.post("/perfileditFisico", upload.single('imagem-perfilF'),
     console.log(erros)
     if (!erros.isEmpty()) {
       console.log(erros);
-      return res.render("pages/perfilF", { listaErros: erros, dadosNotificacao: null, valores: req.body })
+      return res.render("pages/perfileditF", { listaErros: erros, dadosNotificacao: null, valores: req.body })
     }
     try {
       var dadosForm = {
@@ -360,8 +358,10 @@ router.post("/perfileditFisico", upload.single('imagem-perfilF'),
         nomeFisico: req.body.nomeFisico,
         senhaFisico: bcrypt.hashSync(req.body.senhaFisico, salt),
         telFisico: req.body.telFisico,
-        imgPerfilPastaFisi: null,
+        lojaFisico: req.body.lojaFisico,
+        imgPerfilPastaFisi: req.body.imgPerfilPastaFisi
       };
+      console.log(dadosForm)
       console.log("senha: " + req.body.senhaFisico)
       if (req.body.senhaFisico != "") {
         dadosForm.senhaFisico = bcrypt.hashSync(req.body.senhaFisico, salt);
@@ -374,35 +374,45 @@ router.post("/perfileditFisico", upload.single('imagem-perfilF'),
       }
       console.log(dadosForm);
 
+      console.log("id -->"+ req.session.autenticado.id);
+
       let resultUpdate = await usuarioDAL.updateF(dadosForm, req.session.autenticado.id);
+      
       if (!resultUpdate.isEmpty) {
-        if (resultUpdate.changedRows == 1) {
+        console.log(resultUpdate);
+        if (resultUpdate.affectedRows == 1) {
           var result = await usuarioDAL.findIDFisi(req.session.autenticado.id);
+          console.log(result);
           var autenticado = {
             autenticado: result[0].nomeFisico,
             id: result[0].idFisico,
+            telFisico: result[0].telFisico,
+            emailFisico: result[0].emailFisico,
+            lojaFisico: result[0].lojaFisico,
+            senhaFisico: result[0].senhaFisico,
             imgPerfilBancoFisi: result[0].imgPerfilBancoFisi,
             imgPerfilPastaFisi: result[0].imgPerfilPastaFisi
           };
+          console.log(autenticado)
           req.session.autenticado = autenticado;
           var campos = {
             nomeFisico: result[0].nomeFisico, emailFisico: result[0].emailFisico,
             imgPerfilPastaFisi: result[0].imgPerfilPastaFisi, imgPerfilBancoFisi: result[0].imgPerfilBancoFisi,
-            telFisico: result[0].telFisico, senhaFisico: ""
+            telFisico: result[0].telFisico, lojaFisico: result[0].lojaFisico, senhaFisico: ""
           }
-          res.render("pages/perfilF", { listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
+          res.render("pages/perfilF", { autenticado: autenticado, listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
         }
       }
     } catch (e) {
       console.log(e)
-      res.render("pages/perfilF", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
+      res.render("pages/perfilF", { autenticado: autenticado, listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
     }
 
   });
 
 // PERFIL JURIDICO
 
-router.get("/perfilJ", async function (req, res) {
+router.get("/perfilJ", verificarUsuAutenticado, async function (req, res) {
   try {
     let results = await usuarioDAL.findIDJuri(req.session.autenticado.id);
     console.log(results);
@@ -412,7 +422,7 @@ router.get("/perfilJ", async function (req, res) {
       telJuridico: results[0].telJuridico, cnpj: results[0].cnpj, enderecoJuridico: results[0].enderecoJuridico,
       senhaJuridico: ""
     }
-    res.render("pages/perfilJ", { listaErros: null, dadosNotificacao: null, valores: campos })
+    res.render("pages/perfilJ", { listaErros: null, dadosNotificacao: null, valores: campos, autenticado: req.session.autenticado })
   } catch (e) {
     res.render("pages/perfilJ", {
       listaErros: null, dadosNotificacao: null, valores: {
@@ -421,13 +431,12 @@ router.get("/perfilJ", async function (req, res) {
       }
     })
   }
+  res.render("pages/perfilJ",{ autenticado: req.session.autenticado, retorno: null, erros: null, valores: {"senhaJuridico":"","emailJuridico":"","nomeJuridico":"","telJuridico":"","enderecoJuridico":"","cnpj":""}})
 });
 
-router.post("/perfileditJuridico", upload.single('imagem-perfilJuridico'),
+router.post("/perfileditJuridico", upload.single('input-imagem1'),
   body("nomeJuridico")
     .isLength({ min: 3, max: 20 }).withMessage("Mínimo de 3 letras e máximo de 20!"),
-  body("cnpj")
-    .isLength({ min: 10, max: 15 }).withMessage("O CNPJ deve ter 14 dígitos!"),
   body("emailJuridico")
     .isEmail().withMessage("Digite um e-mail válido!"),
   body("senhaJuridico")
@@ -437,20 +446,20 @@ router.post("/perfileditJuridico", upload.single('imagem-perfilJuridico'),
     .isLength({ min: 10, max: 15 }).withMessage("O telefone tem 10 digitos!"),
   async function (req, res) {
     const erros = validationResult(req);
-    console.log(erros)
     if (!erros.isEmpty()) {
+      console.log(erros)
       return res.render("pages/perfilJ", { listaErros: erros, dadosNotificacao: null, valores: req.body })
     }
     try {
       var dadosForm = {
         nomeJuridico: req.body.nomeJuridico,
-        cnpj: req.body.cnpj,
         emailJuridico: req.body.emailJuridico,
         senhaJuridico: bcrypt.hashSync(req.body.senhaJuridico, salt),
         telJuridico: req.body.telJuridico,
         enderecoJuridico: req.body.enderecoJuridico,
-        imgPerfilPastaJuri: null,
+        imgPerfilPastaJuri: req.body.imgPerfilPastaJuri,
       };
+      console.log(dadosForm)
       console.log("Senha: " + req.body.senhaJuridico)
       if (req.body.senhaJuridico != "") {
         dadosForm.senhaJuridico = bcrypt.hashSync(req.body.senhaJuridico, salt);
@@ -465,26 +474,34 @@ router.post("/perfileditJuridico", upload.single('imagem-perfilJuridico'),
 
       let resultUpdate = await usuarioDAL.updateJ(dadosForm, req.session.autenticado.id);
       if (!resultUpdate.isEmpty) {
-        if (resultUpdate.changedRows == 1) {
+        console.log(resultUpdate);
+        if (resultUpdate.affectedRows == 1) {
           var result = await usuarioDAL.findIDJuri(req.session.autenticado.id);
+          console.log(result)
           var autenticado = {
             autenticado: result[0].nomeJuridico,
             id: result[0].idJuridico,
-            img_perfil_banco: result[0].imgPerfilBancoJuri,
-            img_perfil_pasta: result[0].imgPerfilPastaJuri
+            emailJuridico: result[0].emailJuridico,
+            telJuridico: result[0].telJuridico,
+            enderecoJuridico: result[0].enderecoJuridico,
+            senhaJuridico: result[0].senhaJuridico,
+            cnpj: result[0].cnpj,
+            imgPerfilBancoJuri: result[0].imgPerfilBancoJuri,
+            imgPerfilPastaJuri: result[0].imgPerfilPastaJuri
           };
+          console.log(autenticado)
           req.session.autenticado = autenticado;
           var campos = {
             nomeJuridico: result[0].nomeJuridico, emailJuridico: result[0].emailJuridico,
             imgPerfilPastaJuri: result[0].imgPerfilPastaJuri, imgPerfilBancoJuri: result[0].imgPerfilBancoJuri,
             cnpj: result[0].cnpj, telJuridico: result[0].telJuridico, enderecoJuridico: result[0].enderecoJuridico, senhaJuridico: ""
           }
-          res.render("pages/perfilJuridico", { listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
+          res.render("pages/perfilJ", { autenticado: autenticado, listaErros: null, dadosNotificacao: { titulo: "Perfil! atualizado com sucesso", mensagem: "", tipo: "success" }, valores: campos });
         }
       }
     } catch (e) {
       console.log(e)
-      res.render("pages/perfilJuridico", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
+      res.render("pages/perfilJuridico", { autenticado: autenticado, listaErros: erros, dadosNotificacao: { titulo: "Erro ao atualizar o perfil!", mensagem: "Verifique os valores digitados!", tipo: "error" }, valores: req.body })
     }
 
   });

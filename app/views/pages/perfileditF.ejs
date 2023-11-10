@@ -10,8 +10,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/b023fbb394.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/perfiledit.css">
-
-    <title>Perfil </title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <title>Perfil</title>
 </head>
 
 <body>
@@ -50,9 +53,9 @@
       <div class="nav-home">
         <ul>
             <li><a onclick="window.location='/homeLF'">Home</a> </li>
-            <li><a onclick="window.location='/artigosLF'">Blog</a> </li>
-            <li onclick="window.location='/lojaLF'"><a>Loja</a> </li>
-            <li onclick="window.location='/sair'"><a>Sair</a> </li>
+            <li><a onclick="window.location='/artigos'">Blog</a> </li>
+            <li onclick="window.location='/loja'"><a>Loja</a> </li>
+            <li  onclick="window.location='/sair'"><a>Sair</a> </li>
            
         
         </ul>
@@ -128,7 +131,7 @@
               
                           <li class="list-item">
               
-                               <a  onclick="window.location='/artigosLF'">
+                               <a  onclick="window.location='/artigos'">
                               
                                <i class='bx bx-user'></i>
           
@@ -150,7 +153,7 @@
               
                           <li class="list-logout">
           
-                              <a onclick="window.location='/lojaLF'">
+                              <a onclick="window.location='/loja'">
               
                               <i class='bx bx-log-out'></i>
               
@@ -164,25 +167,6 @@
               
                           </li>
                       </ul>
-                      
-                    <ul class="list-logout">
-
-                        <li class="list-sair">
-        
-                            <a onclick="window.location='/sair'">
-            
-                            <i class='bx bx-log-out'></i>
-            
-             
-                            <box-icon name='door-open' type='solid'  class="img_home" color='#ffffff' id="sair" ></box-icon>
-                            <span class="links-name">Sair</span>
-            
-                            </a>
-    
-                            <span class="tooltip">sair</span>
-            
-                        </li>
-                    </ul>
               
                </div>
           </div>
@@ -191,7 +175,86 @@
   
   </section>
 <main>
+    <%
 
+    let arquivo = {"imagen":"imagen/img-perfil.png"}
+ 
+    if(valores.imgPerfilPastaFisi!= null){
+        arquivo.imagem = valores.imgPerfilPastaFisi
+    }else if(valores.imgPerfilBancoFisi != null){ 
+        console.log(valores.imgPerfilBancoFisi)
+        const imgBuffer = Buffer.from(valores.imgPerfilBancoFisi);
+        const imgBase64 = imgBuffer.toString('base64');
+        const dataURL = `data:image/jpeg;base64,${imgBase64}`;
+        arquivo.imagem= dataURL;
+    }
+
+    let msgErro = {"nomeFisico":"", "emailFisico":"", "lojaFisico":"","senhaFisico":"", "telFisico":""}
+    let avisoErro = {"nomeFisico":"", "emailFisico":"", "lojaFisico":"","senhaFisico":"", "telFisico":""}
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nomeFisico"){
+                avisoErro.nomeFisico = "erro";
+                msgErro.nomeFisico += " "+itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo nome <br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "telFisico"){
+                avisoErro.telFisico = "erro";
+                msgErro.telFisico = itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo Telefone", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "senhaFisico"){
+                avisoErro.senhaFisico = "erro";
+                msgErro.senhaFisico = itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "emailFisico"){
+                avisoErro.emailFisico = "erro";
+                msgErro.emailFisico = itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo e-mail", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "lojaFisico"){
+                avisoErro.lojaFisico = "erro";
+                msgErro.lojaFisico = itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo loja", "error", "center")                        
+                </script>
+                <%
+            }
+        })
+    }
+    if (dadosNotificacao) { 
+
+        %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){
+                        window.location="/"
+                    }, 3000)
+                }                        
+        </script>
+    <% }
+
+        %>
     <div  class="retorno">
         <box-icon name='chevron-left' color='#616162' class="Box-seta"  onclick="window.location='/perfilF'"></box-icon>
         <p onclick="window.location='/perfilF'">Voltar</p>
@@ -201,54 +264,57 @@
 
 
     <section class="seccion-perfil-usuario">
-        <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada">
-                <div class="perfil-usuario-avatar">
-                    <img id="imagem-de-fundo1" src="img/perfil/perfil.png" alt="img-avatar1">
-                    <label for="input-imagem1" class="upload-icon1">
-                        <i class='bx bxs-pencil'></i>
-                    </label>
-                    <input type="file" id="input-imagem1" accept="image/*" onchange="alterarImagemDeFundo1()">
-                </div>
-            </div>
-        </div >
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
             </div>
           <div class="edit">
-            <form action="/perfiledit" method="post">
-
+            <form action="/perfileditFisico" method="post" enctype="multipart/form-data">
+                <div class="perfil-usuario-header">
+                    <div class="perfil-usuario-portada">
+                        <div class="perfil-usuario-avatar">
+                            <img id="imagem-de-fundo1" src="<%= arquivo.imagen %>" name="imagem-perfilF" id="imagem-perfilF">
+                            <label for="input-imagem1" class="upload-icon1">
+                                <i class='bx bxs-pencil'></i>
+                            </label>
+                            <input type="file" id="input-imagem1" name="input-imagem1" accept="image/*" onchange="loadImg()">
+                        </div>
+                    </div>
+                </div>
             <div class="alteraçao-inpults">
 
                 <h1>Informações Básicas</h1>
 
             <div class="input-box">
-                <input type="text" >
+                <input type="text" name="nomeFisico" id="nomeFisico" value="<%= valores.nomeFisico %>" class="<%= avisoErro.nomeFisico %>">
                 <span>Nome</span>
+                <span> <%= msgErro.nomeFisico %> </span>
             </div>
             <div class="input-box">
-                <input type="text"  >
+                <input type="text" name="lojaFisico" id="lojaFisico" value="<%= valores.lojaFisico %>" class="<%= avisoErro.lojaFisico %>">
                 <span>Loja</span>
+                <span> <%= msgErro.lojaFisico %> </span>
             </div>
             <div class="input-box">
-                <input type="email" >
+                <input type="text" name="emailFisico" id="emailFisico" value="<%= valores.emailFisico %>" class="<%= avisoErro.emailFisico %>">
                 <span>E-mail</span>
+                <span> <%= msgErro.emailFisico %> </span>
             </div>
             <div class="input-box">
-                <input type="tel"  >
-                <span>Tel</span>
+                <input type="text" name="telFisico" id="telFisico" maxlength="15" value="<%= valores.telFisico %>" class="<%= avisoErro.telFisico %>">
+                <span>Telefone</span>
+                <span> <%= msgErro.nomeFisico %> </span>
             </div>
             <div class="input-box">
-                <input type="password">
+                <input type="password" name="senhaFisico" id="senhaFisico">
                 <span>Senha</span>
-            
+                <p>Caso queira manter sua senha atual, não escreva neste campo.</p>
             </div>
            
             </div>
 
 
-            <a href="/deletar" class="delete-button">Cancelar</a>
-                <input type="submit" value="Salvar" class="alte">
+            <a href="/sair" class="delete-button">Sair</a>
+            <input type="submit" value="Salvar" class="alte">
             </form>
           </div>
         </div>
@@ -258,14 +324,14 @@
 
 
         <script>
-            const telFisico = document.getElementById('telFisico')
-            telFisico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value))
-            telFisico.addEventListener('change', (e) => mascaraTelefone(e.target.value)) 
+            const telFisico = document.getElementById('telFisico') // Seletor do campo de telefone
+            telFisico.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
+            telFisico.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
             const mascaraTelefone = (valor) => {
                 valor = valor.replace(/\D/g, "")
                 valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
                 valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
-             telFisico.value = valor 
+             telFisico.value = valor // Insere o(s) valor(es) no campo
             }
         </script>
         
@@ -288,6 +354,16 @@
     <script src="js/home.js"></script>
 
     <footer>
+    
+        // TIRAR ESTA SEÇÃO, E CORRIGIR O CSS
+        <div class="div-faça-parte">
+          <div class="faça-parte">
+              <p>Faça parte da Ecovox e vamos tornar o Brasil mais ecológico juntos!</p>
+              <button  onclick="window.location='/cadastroF'">  ACESSO </button>
+              <img src="/imagen\home-correto.png" >
+          </div>
+      <div>
+        // TIRAR ESTA SEÇÃO, E CORRIGIR O CSS
       
       
           <div class="contato">

@@ -177,8 +177,25 @@
         <div class="input-box">
             <input type="password" id="senhaJuridico"class="senha" value="<%= valores.senhaJuridico %>" class="<%= avisoErro.senhaJuridico %>" name="senhaJuridico"/>
             <span class="span-input">Senha</span>
+            <div id="MMM" onclick="showHide()"></div>
             <span class="span-input-erro"> <%= msgErro.senhaJuridico %> </span>
         </div>
+
+        
+        <script>
+            const senhaJuridico = document.getElementById('senhaJuridico');
+            const MMM = document.getElementById('MMM');
+
+            function showHide(){
+                if( senhaJuridico.type === " senhaJuridico"){
+                    senhaJuridico.setAttribute('type', 'senhaJuridico');
+                    MMM.classList.remove('hide');
+                }else{
+                    senhaJuridico.setAttribute('type', 'text');
+                    MMM.classList.add('hide');
+                }
+            }
+        </script>
 
 
         <p class="Politica">Ao cadastrar-se você concorda com a <br>

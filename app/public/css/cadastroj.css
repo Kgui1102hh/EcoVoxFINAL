@@ -42,6 +42,20 @@ body section{
     background-image: url("/imagen/login-folhas.png");
 
 }
+#MMM{
+  position: absolute;
+  display: flex;
+  top: 60%;
+  margin-top: -14px;
+  margin-left: 390px;
+  opacity: 15%;
+  width: 50px;
+  height: 50px;
+  color: #888888;
+  background:url("/imagen/cadastro-show.png");
+  background-size: cover;
+  cursor: pointer;
+}
 
 .seta{
     width: 100px;

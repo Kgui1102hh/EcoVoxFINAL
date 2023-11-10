@@ -8,7 +8,7 @@ module.exports = class UsuarioDAL {
         return new Promise((resolve, reject) => {
             this.conexao.query("SELECT u.idFisico, u.nomeFisico " +
                 "u.senhaFisico, u.emailFisico, u.telFisico" +
-                " u.statusFisico FROM pessoaf where u.statusFisico = 1 " +
+                " u.statusFisico, u.lojaFisico FROM pessoaf where u.statusFisico = 1 " +
                 function (error, elements) {
                     if (error) {
                         return reject(error);
@@ -23,7 +23,7 @@ module.exports = class UsuarioDAL {
         return new Promise((resolve, reject) => {
             this.conexao.query("SELECT u.idJuridico, u.nomeJuridico, u.cnpj " +
                 "u.senhaJuridico, u.emailJuridico, u.telJuridico, u.enderecoJuridico" +
-                " u.statusJuridico FROM pessoaf where u.statusJuridico = 1 " +
+                " u.statusJuridico, u.lojaJuridico FROM pessoaf where u.statusJuridico = 1 " +
                 function (error, elements) {
                     if (error) {
                         return reject(error);
@@ -64,11 +64,11 @@ module.exports = class UsuarioDAL {
 
     findIDFisi(id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT u.idFisico, u.nomeFisico," +
-                "u.senhaFisico, u.emailFisico, u.telFisico," +
-                "u.imgPerfilPastaFisi, u.imgPerfilPastaFisi," +
-                " u.statusFisico, FROM pessoaf where u.statusFisico = 1 " +
-                " and u.idFisico = ?", [id], function (error, elements) {
+            this.conexao.query("SELECT idFisico, nomeFisico," +
+                " senhaFisico, emailFisico, telFisico," +
+                " imgPerfilPastaFisi, imgPerfilPastaFisi, lojaFisico," +
+                " statusFisico FROM pessoaf where statusFisico = 1 " +
+                " and idFisico = ?", [id], function (error, elements) {
                     if (error) {
                         return reject(error);
                     }
@@ -80,11 +80,11 @@ module.exports = class UsuarioDAL {
 
     findIDJuri(id) {
         return new Promise((resolve, reject) => {
-            this.conexao.query("SELECT u.idJuridico, u.nomeJuridico, u.cnpj" +
-                "u.senhaJuridico, u.emailJuridico, u.telJuridico, u.enderecoJuridico" +
-                "u.imgPerfilPastaJuri, u.imgPerfilPastaJuri," +
-                " u.statusJuridico, FROM pessoaj where u.statusJuridico = 1 " +
-                " and u.idJuridico = ?", [id], function (error, elements) {
+            this.conexao.query("SELECT idJuridico, nomeJuridico, cnpj" +
+                " senhaJuridico, emailJuridico, telJuridico, enderecoJuridico" +
+                " imgPerfilPastaJuri, imgPerfilPastaJuri," +
+                " statusJuridico FROM pessoaj where statusJuridico = 1 " +
+                " and idJuridico = ?", [id], function (error, elements) {
                     if (error) {
                         return reject(error);
                     }
@@ -146,10 +146,10 @@ module.exports = class UsuarioDAL {
         });
     }
 
-    updateF(camposJson, id) {
+    updateF(dadosForm, id) {
         return new Promise((resolve, reject) => {
             this.conexao.query("UPDATE pessoaf SET ? WHERE idFisico = ?",
-            [camposJson, id],
+            [dadosForm, id],
             function (error, results, fields) {
                 if (error) {
                     return reject(error);
@@ -159,10 +159,10 @@ module.exports = class UsuarioDAL {
         });
     }
 
-    updateJ(camposJson, id) {
+    updateJ(dadosForm, id) {
         return new Promise((resolve, reject) => {
             this.conexao.query("UPDATE pessoaj SET ? WHERE idJuridico = ?",
-            [camposJson, id],
+            [dadosForm, id],
             function (error, results, fields) {
                 if (error) {
                     return reject(error);

@@ -150,11 +150,11 @@
 
             function showHide(){
                 if( senhaFisico.type === " senhaFisico"){
-                    senhaFisico.setAttribute('type', 'text');
-                    MMM.classList.add('hide');
-                }else{
                     senhaFisico.setAttribute('type', 'senhaFisico');
                     MMM.classList.remove('hide');
+                }else{
+                    senhaFisico.setAttribute('type', 'text');
+                    MMM.classList.add('hide');
                 }
             }
         </script>
