@@ -148,7 +148,7 @@ router.get('/perfilF', function (req, res) {
   res.render('pages/perfilF', { listaErros: null, dadosNotificacao: null, autenticado: req.session.autenticado });
 });
 router.get('/perfileditF', function (req, res) {
-  res.render('pages/perfileditF', { listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });
+  res.render('pages/perfileditF', { autenticado: req.session.autenticado, listaErros: null, dadosNotificacao: null, valores: { nomeFisico: "", emailFisico: "", senhaFisico: "", telFisico: "", imgPerfilPastaFisi: "" } });
 });
 router.get('/perfilJ', function (req, res) {
   res.render('pages/perfilJ', { listaErros: null, dadosNotificacao: null, autenticado: req.session.autenticado });

@@ -155,13 +155,13 @@
             let arquivo = {"imagen":"imagen/img-perfil.png"}
          
             if(valores.imgPerfilPastaFisi != null){
-                arquivo.imagem = valores.imgPerfilPastaFisi
+                arquivo.imagen = valores.imgPerfilPastaFisi
             }else if(valores.imgPerfilBancoFisi != null){ 
                 console.log(valores.imgPerfilBancoFisi)
                 const imgBuffer = Buffer.from(valores.imgPerfilBancoFisi);
                 const imgBase64 = imgBuffer.toString('base64');
                 const dataURL = `data:image/jpeg;base64,${imgBase64}`;
-                arquivo.imagem= dataURL;
+                arquivo.imagen = dataURL;
             }
     %>
 
@@ -169,7 +169,7 @@
         <div class="perfil-usuario-header">
           
             <div class="perfil-usuario-avatar">
-                <img id="imagem-de-fundo1" name="imagem-de-fundo1" src="<%= arquivo.imagen %>">
+                <img id="imagem-perfilF" name="imagem-perfilF" src="<%= arquivo.imagen %>">
             </div>
         </div>
         <div class="perfil-usuario-body">
