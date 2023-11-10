@@ -2017,6 +2017,7 @@ footer{
     border: 7px solid #ffff;
     background-color: #DFE5F2;
     border-radius: 50%;
+    margin-left: 20px;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     position: absolute;
     bottom: 170px;
